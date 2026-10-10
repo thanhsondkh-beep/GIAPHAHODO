@@ -240,6 +240,32 @@ tr.click:hover td{background:var(--paper)}
 .lightbox{position:fixed;inset:0;z-index:70;background:rgba(10,4,3,.92);display:grid;place-items:center;padding:16px;cursor:zoom-out}
 .lightbox img{max-width:100%;max-height:calc(100dvh - 32px);object-fit:contain}
 .lightbox .x{position:absolute;top:calc(10px + env(safe-area-inset-top,0px));right:12px;color:#fff;font-size:30px}
+/* Thanh menu dưới đáy (điện thoại) */
+.tabbar{display:none}
+@media (max-width:860px){
+  .tabbar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:30;
+    background:var(--lacquer-deep);border-top:2px solid var(--gold);padding-bottom:env(safe-area-inset-bottom,0px)}
+  .tabbar button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 2px 6px;background:none;border:0;color:var(--on-lacquer);opacity:.75;font-size:10.5px;font-weight:600;cursor:pointer;min-width:0}
+  .tabbar button span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+  .tabbar button[aria-current="page"]{opacity:1;color:var(--gold)}
+  body{padding-bottom:calc(62px + env(safe-area-inset-bottom,0px))}
+  footer{padding-bottom:0}
+  body .toast{bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+}
+.grid-b{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:-12px 0 28px}
+@media (max-width:1100px){.grid-b{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:720px){.grid-b{grid-template-columns:minmax(0,1fr)}}
+.mini-list{display:flex;flex-direction:column}
+.mini{display:flex;gap:12px;align-items:flex-start;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:12px 14px;cursor:pointer;width:100%}
+.mini:last-child{border-bottom:0}
+.mini:hover{background:var(--paper)}
+.mini-pic{flex:none;width:72px;height:72px;border-radius:4px;overflow:hidden;background:var(--gold-soft)}
+.mini-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.mini-t{display:flex;flex-direction:column;gap:2px;min-width:0}
+.mini-t small{color:var(--muted);font-size:12px}
+.mini-t b{color:var(--lacquer);font-family:var(--f-display);font-size:15.5px;line-height:1.3}
+.clamp{font-size:13.5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ver{font-size:11px;opacity:.6}
 .ky-month{display:grid;grid-template-columns:64px minmax(0,1fr);gap:10px;padding:8px 14px;border-bottom:1px solid var(--line);font-size:14px}
 .ky-month:last-child{border-bottom:0}
 .ky-month .m{font-weight:700;color:var(--lacquer)}
@@ -287,9 +313,10 @@ footer .credit{font-size:12.5px;opacity:.9;line-height:1.6}
 <footer>
   <div class="wrap">
     <div class="brand"><span class="seal">杜</span><div><b>ĐỖ ĐẠI TỘC</b><div style="font-size:12px;letter-spacing:.14em">UỐNG NƯỚC NHỚ NGUỒN</div></div></div>
-    <div class="credit">Thôn Trà Trung, xã Hải Hưng, tỉnh Ninh Bình<br>Phả đồ biên soạn: Đỗ Trọng Hanh · Đỗ Thanh Tú · Đỗ Thanh Phúc · Trưởng họ: Đỗ Thế Phách</div>
+    <div class="credit">Thôn Trà Trung, xã Hải Hưng, tỉnh Ninh Bình<br>Phả đồ biên soạn: Đỗ Trọng Hanh · Đỗ Thanh Tú · Đỗ Thanh Phúc · Trưởng họ: Đỗ Thế Phách<br><span class="ver" id="ver"></span></div>
   </div>
 </footer>
+<nav class="tabbar" id="tabbar" aria-label="Điều hướng nhanh"></nav>
 <div id="modalRoot"></div>
 
 <script>
@@ -349,6 +376,7 @@ pages:[
 <script>
 const CFG=window.GIAPHA_CONFIG||{},SEED=window.GIAPHA_SEED||{members:[],library:[],news:[],pages:[]};
 const FB_VER="10.12.2";
+const APP_VER="2026-10-10.6";
 const DEMO=!CFG.firebase||!CFG.firebase.apiKey||/^DIEN_/.test(CFG.firebase.apiKey);
 let ED="";try{ED=localStorage.getItem("giapha_editor")||""}catch(e){}
 const NAV=[["home","Trang chủ"],["giapha","Gia phả"],["thanhvien","Thành viên"],["chiho","Các chi họ"],["lichsu","Lịch sử dòng họ"],["thuvien","Thư viện"],["tintuc","Tin tức · Lịch kỵ"]];
@@ -425,6 +453,9 @@ const nVerify=()=>S.members.filter(m=>m.verify).length;
 
 /* ---------- Điều hướng ---------- */
 function go(v){S.view=v;try{history.replaceState(null,"","#"+v)}catch(e){}render();window.scrollTo({top:0})}
+const TABS=[["home","Trang chủ","home"],["giapha","Gia phả","tree"],["thanhvien","Thành viên","people"],["thuvien","Thư viện","scroll"],["tintuc","Tin · Lịch kỵ","news"]];
+const TAB_ICON={home:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>'};
+function renderTabs(){$("#tabbar").innerHTML=TABS.map(([k,l,ic])=>`<button data-go="${k}" ${S.view===k?'aria-current="page"':""}>${TAB_ICON[ic]||ICON[ic]}<span>${l}</span></button>`).join("")}
 function renderNav(){$("#nav").innerHTML=NAV.map(([k,l])=>`<button data-go="${k}" ${S.view===k?'aria-current="page"':""}>${l}</button>`).join("");
   $("#nav [aria-current]")?.scrollIntoView?.({block:"nearest",inline:"nearest"})}
 document.addEventListener("click",e=>{
@@ -554,8 +585,29 @@ V.home=()=>{
      <section class="panel"><div class="ph"><h3>Câu đối nhà thờ</h3></div><div class="pb">${giahuanList(false)}</div></section>
     </div>
    </div>
+   <div class="grid-b">
+    <section class="panel"><div class="ph"><h2>Tin tức mới</h2><button class="link" data-go="tintuc">Tất cả →</button></div>${homeNews()}</section>
+    <section class="panel"><div class="ph"><h2>Thư viện tư liệu</h2><button class="link" data-go="thuvien">Tất cả →</button></div>${homeLib()}</section>
+    <section class="panel"><div class="ph"><h2>Lịch kỵ</h2><button class="link" data-go="tintuc">Cả năm →</button></div>${homeKy()}</section>
+   </div>
   </div>`;
 };
+function firstPic(o){const id=(o.images||[])[0];return id?`<div class="mini-pic"><img alt="" loading="lazy" data-img="${esc(id)}"></div>`:""}
+function homeNews(){
+  const l=[...S.news].sort((a,b)=>String(b.date).localeCompare(a.date)).slice(0,3);
+  if(!l.length)return `<div class="empty">Chưa có thông báo.</div>`;
+  return `<div class="mini-list">${l.map(n=>`<button class="mini" data-go="tintuc">${firstPic(n)}<span class="mini-t"><small>${esc(fmtDate(n.date))}${(n.images||[]).length?` · ${n.images.length} ảnh`:""}</small><b>${esc(n.title)}</b><span class="clamp">${esc(String(n.body||"").slice(0,160))}</span></span></button>`).join("")}</div>`;
+}
+function homeLib(){
+  const l=[...S.library].sort((a,b)=>(b.updatedAt||0)-(a.updatedAt||0)).slice(0,3);
+  if(!l.length)return `<div class="empty">Chưa có tư liệu.</div>`;
+  return `<div class="mini-list">${l.map(d=>`<button class="mini" data-go="thuvien">${firstPic(d)}<span class="mini-t"><small>${esc(d.kind||"Tư liệu")}${d.year?" · "+esc(d.year):""}${(d.images||[]).length?` · ${d.images.length} ảnh`:""}</small><b>${esc(d.title)}</b><span class="clamp">${esc(String(d.desc||"").slice(0,140))}</span></span></button>`).join("")}</div>`;
+}
+function homeKy(){
+  const ky=kyList();if(!ky.length)return `<div class="empty">Chưa có ngày kỵ.</div>`;
+  const by={};ky.forEach(k=>(by[k.mo]=by[k.mo]||[]).push(k));
+  return Object.keys(by).map(Number).slice(0,4).map(mo=>`<div class="ky-month"><div class="m">Tháng ${mo}</div><ul>${by[mo].slice(0,4).map(k=>`<li><span>${String(k.d).padStart(2,"0")}/${String(mo).padStart(2,"0")}</span> <button class="link" data-member="${esc(k.id)}" style="font-weight:500;color:var(--ink)">${esc(k.who)}</button></li>`).join("")}${by[mo].length>4?`<li style="color:var(--muted);font-size:12.5px">+${by[mo].length-4} người khác</li>`:""}</ul></div>`).join("");
+}
 V.giapha=()=>{
   const m=S.sel&&byId[S.sel];const lz=loose().filter(x=>!S.branch||branch(x)===S.branch);
   const body=!S.members.length?emptyMembers():S.treeMode==="gens"?gensHTML():
@@ -653,7 +705,7 @@ function renderNotice(){
   $("#notice").innerHTML=bits.length?`<div class="notice"><div class="wrap">${bits.join("")}</div></div>`:"";
 }
 function render(){
-  index();renderNav();renderNotice();
+  index();renderNav();renderTabs();renderNotice();
   const ae=document.activeElement,fid=ae?.id,pos=ae?.selectionStart;
   const sc=$(".tree-scroll");const sx=sc?.scrollLeft,sy=sc?.scrollTop;
   $("#app").innerHTML=(V[S.view]||V.home)();
@@ -910,6 +962,23 @@ render();
     subscribe();
   }catch(e){console.error(e);S.failed=true;S.loading=false;render()}
 })();
+/* Tự kiểm tra bản mới (điện thoại hay giữ bản cũ trong bộ nhớ đệm) */
+$("#ver").textContent="Phiên bản "+APP_VER;
+async function checkUpdate(){
+  if(DEMO||!/^https?:/.test(location.protocol))return;
+  try{
+    const r=await fetch(location.pathname+"?v="+Date.now(),{cache:"no-store"});const t=await r.text();
+    const m=/const APP_VER="([^"]+)"/.exec(t);
+    if(m&&m[1]!==APP_VER){
+      let n=0;try{n=+sessionStorage.getItem("gp_reload")||0}catch(e){}
+      if(n<2){try{sessionStorage.setItem("gp_reload",n+1)}catch(e){}
+        if(navigator.serviceWorker)for(const r of await navigator.serviceWorker.getRegistrations())await r.update().catch(()=>{});
+        if(window.caches)for(const k of await caches.keys())await caches.delete(k);
+        location.reload();}
+    }else{try{sessionStorage.removeItem("gp_reload")}catch(e){}}
+  }catch(e){}
+}
+checkUpdate();document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")checkUpdate()});
 if("serviceWorker" in navigator&&location.protocol==="https:"&&!DEMO){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
 </script>
 <!--CONTENT-END-->
