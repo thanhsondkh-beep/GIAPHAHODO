@@ -1,0 +1,809 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Đỗ Đại Tộc</title>
+<meta name="theme-color" content="#8E1B17">
+<meta name="description" content="Gia phả họ Đỗ Đại Tộc – thôn Trà Trung, xã Hải Hưng, tỉnh Ninh Bình">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Đỗ Đại Tộc">
+</head>
+<body>
+<!--CONTENT-START-->
+<title>Đỗ Đại Tộc</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,800;1,500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&text=%E6%9D%9C%E7%A5%96&display=swap">
+
+<!-- ================= CẤU HÌNH – chỉ cần sửa phần này ================= -->
+<script>
+window.GIAPHA_CONFIG = {
+  // Dán cấu hình từ Firebase Console > Project settings > Your apps > Web app
+  firebase: {
+    apiKey: "AIzaSyCwYUG4AE_bpWBSDhWylIIn3zWiwGRgRjQ",
+    authDomain: "ho-do-tra-trung.firebaseapp.com",
+    projectId: "ho-do-tra-trung",
+    storageBucket: "ho-do-tra-trung.firebasestorage.app",
+    messagingSenderId: "865563948670",
+    appId: "1:865563948670:web:d354a4e47b7e1b4d85ca2f"
+  }  // Chế độ mở: ai có link cũng xem và sửa được, không cần đăng nhập.
+  // Mỗi lần sửa đều ghi tên người sửa vào nhật ký (collection "changelog").
+};
+</script>
+<!-- ==================================================================== -->
+
+<style>
+/* Layout: sơn mài đỏ son + chỉ vàng; header ấn triện, hero đình làng + câu đối, lưới 3 cột; trên điện thoại mọi thứ xếp 1 cột, sơ đồ cuộn ngang + phóng to/thu nhỏ */
+:root{
+  --paper:#F5EAD2; --paper-2:#FCF6E8; --ink:#2B1A12; --muted:#76594A; --line:#E0C99B;
+  --lacquer:#8E1B17; --lacquer-deep:#5A0E0B; --gold:#C29A42; --gold-soft:#EBD8A8;
+  --on-lacquer:#F8E9C4; --nam:#2F5D7C; --nu:#A3445A; --hill-1:#D9C9A6; --hill-2:#C6B38C; --hill-3:#A99670;
+  --shadow:0 1px 0 rgba(90,14,11,.06),0 6px 18px -10px rgba(90,14,11,.35);
+  --f-display:"Playfair Display","Noto Serif",Georgia,serif;
+  --f-body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-seal:"Noto Serif TC","Songti TC","SimSun",serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#1B1210; --paper-2:#251817; --ink:#F1E4C8; --muted:#BDA588; --line:#4A3428;
+  --lacquer:#C0443A; --lacquer-deep:#3D0B09; --gold:#D8B45E; --gold-soft:#4A3822;
+  --on-lacquer:#F8E9C4; --nam:#7FA9C9; --nu:#D88A9C; --hill-1:#2E2220; --hill-2:#3A2B27; --hill-3:#4A3730;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 8px 20px -12px rgba(0,0,0,.8); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#1B1210; --paper-2:#251817; --ink:#F1E4C8; --muted:#BDA588; --line:#4A3428;
+  --lacquer:#C0443A; --lacquer-deep:#3D0B09; --gold:#D8B45E; --gold-soft:#4A3822;
+  --on-lacquer:#F8E9C4; --nam:#7FA9C9; --nu:#D88A9C; --hill-1:#2E2220; --hill-2:#3A2B27; --hill-3:#4A3730;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 8px 20px -12px rgba(0,0,0,.8); color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;-webkit-text-size-adjust:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+input,select,textarea{font-size:16px} /* tránh iPhone tự phóng to khi gõ */
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:16px}
+
+.top{position:sticky;top:0;z-index:20;padding-top:env(safe-area-inset-top,0px);background:linear-gradient(180deg,var(--lacquer),var(--lacquer-deep));color:var(--on-lacquer);border-bottom:2px solid var(--gold)}
+.top .wrap{display:flex;align-items:center;gap:12px;padding-block:10px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;color:inherit;cursor:pointer;background:none;border:0;padding:0}
+.seal{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--on-lacquer);color:var(--lacquer-deep);font-family:var(--f-seal);font-weight:900;font-size:24px;box-shadow:0 0 0 2px var(--gold),0 0 0 4px var(--lacquer-deep);flex:none}
+.brand b{font-family:var(--f-display);font-weight:800;font-size:22px;letter-spacing:.04em;white-space:nowrap}
+nav.main{display:flex;gap:2px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+nav.main::-webkit-scrollbar{display:none}
+nav.main button{background:none;border:0;color:var(--on-lacquer);padding:8px 12px;border-radius:4px;white-space:nowrap;cursor:pointer;opacity:.85;font-weight:500}
+nav.main button:hover{opacity:1;background:rgba(255,255,255,.08)}
+nav.main button[aria-current="page"]{opacity:1;background:var(--gold);color:#3D0B09;font-weight:700}
+.search{display:flex;align-items:center;background:rgba(0,0,0,.18);border:1px solid rgba(248,233,196,.35);border-radius:999px;padding:4px 6px 4px 14px}
+.search input{background:none;border:0;outline:none;color:var(--on-lacquer);width:150px;font-size:15px}
+.search input::placeholder{color:rgba(248,233,196,.65)}
+.search button{background:none;border:0;color:var(--on-lacquer);cursor:pointer;padding:2px 6px;font-size:18px}
+.acct{background:none;border:1px solid rgba(248,233,196,.45);color:var(--on-lacquer);border-radius:999px;padding:6px 12px;cursor:pointer;font-size:13px;white-space:nowrap;max-width:200px;overflow:hidden;text-overflow:ellipsis}
+.acct:hover{background:rgba(255,255,255,.08)}
+@media (max-width:860px){
+  .top{position:relative}
+  .top .wrap{gap:8px}
+  .brand b{font-size:19px}.seal{width:36px;height:36px;font-size:20px}
+  .acct{margin-left:auto}
+  nav.main{order:3;flex-basis:100%}
+  .search{order:4;flex-basis:100%}.search input{width:100%}
+}
+
+.notice{background:var(--gold-soft);border-bottom:1px solid var(--line);font-size:13.5px}
+.notice .wrap{padding-block:8px;display:flex;gap:10px 14px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--paper-2),var(--paper))}
+.hero svg.land{position:absolute;inset:auto 0 0 0;width:100%;height:100%;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;padding-block:30px 40px;gap:6px}
+.hero .seal{width:64px;height:64px;font-size:36px;background:var(--lacquer);color:var(--on-lacquer);box-shadow:0 0 0 3px var(--gold),0 0 0 6px var(--paper-2)}
+.hero h1{font-family:var(--f-display);font-weight:800;font-size:clamp(38px,8vw,72px);line-height:1;margin:12px 0 0;color:var(--lacquer);letter-spacing:.03em;text-wrap:balance}
+.ribbon{display:inline-block;background:var(--lacquer);color:var(--on-lacquer);font-family:var(--f-display);font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:clamp(13px,2.2vw,17px);padding:6px 26px;clip-path:polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%)}
+.place{font-size:13px;letter-spacing:.06em;color:var(--muted);margin-top:4px}
+.couplet{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.couplet span{font-family:var(--f-display);font-style:italic;font-weight:500;font-size:16px;color:var(--ink);background:var(--paper-2);border:1px solid var(--gold);padding:6px 14px;border-radius:3px}
+
+.quick{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-block:18px}
+.quick button{display:flex;gap:10px;align-items:center;text-align:left;background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:12px;cursor:pointer;transition:transform .15s,border-color .15s;min-width:0}
+.quick button:hover{border-color:var(--gold);transform:translateY(-1px)}
+.quick .ic{flex:none;width:38px;height:38px;border-radius:50%;background:var(--lacquer);color:var(--on-lacquer);display:grid;place-items:center}
+.quick b{display:block;font-size:14px;color:var(--lacquer);line-height:1.25}
+.quick small{color:var(--muted);font-size:12px;line-height:1.3;display:block}
+@media (max-width:1050px){.quick{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.quick{grid-template-columns:repeat(2,minmax(0,1fr))}.quick button{padding:10px;gap:8px}.quick .ic{width:32px;height:32px}}
+
+.grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1.1fr) minmax(0,.85fr);gap:16px;margin-bottom:28px}
+@media (max-width:1100px){.grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.grid .p-tree{grid-column:1/-1}}
+@media (max-width:720px){.grid{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--paper-2);border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow);min-width:0}
+.ph{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.ph h2,.ph h3{margin:0;font-family:var(--f-display);font-weight:800;color:var(--lacquer);font-size:16px;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.ph h2::before,.ph h3::before{content:"";width:8px;height:8px;background:var(--gold);transform:rotate(45deg)}
+.pb{padding:14px}
+.link{background:none;border:0;color:var(--lacquer);cursor:pointer;font-size:13.5px;font-weight:600;padding:0;text-align:left}
+.link:hover{text-decoration:underline}
+.side{display:flex;flex-direction:column;gap:16px;min-width:0}
+
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--lacquer);background:var(--lacquer);color:var(--on-lacquer);padding:8px 14px;border-radius:4px;cursor:pointer;font-weight:600;font-size:14px}
+.btn:hover{background:var(--lacquer-deep)}
+.btn:disabled{opacity:.6;cursor:default}
+.btn.ghost{background:transparent;color:var(--lacquer)}
+.btn.ghost:hover{background:var(--gold-soft)}
+.btn.danger{background:transparent;color:var(--nu);border-color:var(--nu)}
+select.f,input.f,textarea.f{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:7px 10px;min-width:0;max-width:100%}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.filters label{font-size:12.5px;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--lacquer);border-radius:4px;overflow:hidden}
+.seg button{background:transparent;border:0;color:var(--lacquer);padding:6px 12px;cursor:pointer;font-weight:600;font-size:13.5px}
+.seg button[aria-pressed="true"]{background:var(--lacquer);color:var(--on-lacquer)}
+.zoom{display:inline-flex;gap:4px}
+.zoom button{width:32px;height:32px;border:1px solid var(--line);background:var(--paper);border-radius:4px;cursor:pointer;font-weight:700;color:var(--lacquer)}
+
+.tree-scroll{overflow:auto;padding:16px 8px 20px;-webkit-overflow-scrolling:touch;max-height:75vh}
+.tree{width:max-content;margin:0 auto}
+.tree ul{position:relative;display:flex;justify-content:center;padding:20px 0 0;margin:0}
+.tree>ul{padding-top:0}
+.tree li{list-style:none;position:relative;padding:20px 5px 0;text-align:center}
+.tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:20px;border-top:1.5px solid var(--gold)}
+.tree li::after{right:auto;left:50%;border-left:1.5px solid var(--gold)}
+.tree li:only-child::before,.tree li:only-child::after{display:none}
+.tree li:only-child{padding-top:0}
+.tree>ul>li{padding-top:0}
+.tree li:first-child::before,.tree li:last-child::after{border:0}
+.tree li:last-child::before{border-right:1.5px solid var(--gold);border-radius:0 6px 0 0}
+.tree li:first-child::after{border-radius:6px 0 0 0}
+.tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:20px;border-left:1.5px solid var(--gold)}
+.node{display:inline-flex;flex-direction:column;align-items:center;gap:1px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 8px 6px;min-width:88px;max-width:124px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.node:hover,.node.sel{border-color:var(--lacquer);box-shadow:0 0 0 2px var(--gold-soft)}
+.node.chk{border-style:dashed;border-color:var(--gold)}
+.node{border-top:3px solid var(--nam);min-width:110px;max-width:170px;padding:7px 9px 6px}
+.node.nu{border-top-color:var(--nu)}
+.node.chk{border-top-style:solid}
+.node.chk.nam{border-top-color:var(--nam)} .node.chk.nu{border-top-color:var(--nu)}
+.node .pp{display:flex;flex-direction:column;align-items:center;width:100%;line-height:1.25}
+.node .pp.sp{border-top:1px dashed var(--line);margin-top:4px;padding-top:4px}
+.node .pp span{font-size:12px;font-weight:500}
+.node b{font-size:12.5px;line-height:1.25;font-weight:700}
+.node small{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.node em{font-style:normal;font-size:10.5px;color:var(--lacquer);font-weight:600;letter-spacing:.04em}
+.node em.gen{margin-top:4px;opacity:.85}
+.node.root{border:1.5px solid var(--gold);background:var(--gold-soft);min-width:130px;max-width:170px}
+.node.root b{font-size:14px;font-family:var(--f-display)}
+.av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:var(--paper-2);background:var(--nam);font-size:14px;margin-bottom:3px;flex:none}
+.av.nu{background:var(--nu)}
+.node.root .av{width:44px;height:44px;background:var(--lacquer);color:var(--on-lacquer);font-family:var(--f-seal);font-size:22px;box-shadow:0 0 0 2px var(--gold)}
+.more{font-size:11px;color:var(--muted);border:1px dashed var(--line);border-radius:4px;padding:4px 8px;display:inline-block}
+.chip{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.03em;padding:1px 7px;border-radius:999px;background:var(--gold-soft);color:var(--muted);vertical-align:middle;white-space:nowrap}
+.chip.warn{background:transparent;border:1px dashed var(--gold);color:var(--lacquer)}
+
+.gens{display:flex;flex-direction:column}
+.gen-row{display:grid;grid-template-columns:76px minmax(0,1fr);gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.gen-row:last-child{border-bottom:0}
+.gen-row .lbl{font-family:var(--f-display);font-weight:800;color:var(--lacquer);line-height:1.15}
+.gen-row .lbl small{display:block;font-family:var(--f-body);font-weight:500;color:var(--muted);font-size:11.5px}
+.people{display:flex;flex-wrap:wrap;gap:6px}
+.pchip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 10px 4px 4px;cursor:pointer;font-size:13px;line-height:1.2;text-align:left}
+.pchip .av{width:24px;height:24px;font-size:11px;margin:0}
+.pchip.chk{border-style:dashed;border-color:var(--gold)}
+.pchip.sel{border-color:var(--lacquer);box-shadow:0 0 0 2px var(--gold-soft)}
+.pchip small{color:var(--muted);font-size:11px}
+
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{text-align:left;font-weight:600;color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em;padding:8px 10px;border-bottom:1px solid var(--line);background:var(--paper);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.click{cursor:pointer}
+tr.click:hover td{background:var(--paper)}
+.who{display:flex;align-items:center;gap:8px;min-width:0}
+.who .av{width:28px;height:28px;font-size:12px;margin:0}
+@media (max-width:640px){.hide-sm{display:none}}
+
+.prose p{margin:0 0 10px;max-width:68ch}
+.excerpt{font-size:14px}
+.excerpt p{margin:0 0 8px}
+.giahuan{font-family:var(--f-display);font-style:italic;font-size:15.5px;line-height:1.7;margin:0;padding:0;list-style:none}
+.giahuan li::before{content:"✦ ";color:var(--gold);font-style:normal;font-size:11px}
+.giahuan.big{font-size:20px;line-height:1.9;text-align:center}
+.giahuan.big li::before{content:""}
+.section-title{font-family:var(--f-display);font-weight:800;color:var(--lacquer);font-size:clamp(26px,5vw,34px);margin:24px 0 4px;text-wrap:balance}
+.section-sub{color:var(--muted);margin:0 0 16px}
+
+.two{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px;margin-bottom:28px;align-items:start}
+@media (max-width:900px){.two{grid-template-columns:minmax(0,1fr)}}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:28px}
+.card{background:var(--paper-2);border:1px solid var(--line);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.card h3{margin:0;font-family:var(--f-display);color:var(--lacquer);font-size:19px}
+.card .meta{font-size:12.5px;color:var(--muted)}
+.stat{display:flex;gap:18px;flex-wrap:wrap}
+.stat div b{display:block;font-family:var(--f-display);font-size:24px;color:var(--lacquer);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat div span{font-size:12px;color:var(--muted)}
+.dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 12px;font-size:14px;margin:0}
+.dl dt{color:var(--muted)} .dl dd{margin:0}
+.empty{padding:28px 16px;text-align:center;color:var(--muted)}
+.empty b{display:block;color:var(--ink);font-size:15px;margin-bottom:4px}
+.ky-month{display:grid;grid-template-columns:64px minmax(0,1fr);gap:10px;padding:8px 14px;border-bottom:1px solid var(--line);font-size:14px}
+.ky-month:last-child{border-bottom:0}
+.ky-month .m{font-weight:700;color:var(--lacquer)}
+.ky-month ul{margin:0;padding:0;list-style:none}
+.ky-month li span{font-variant-numeric:tabular-nums;color:var(--muted);display:inline-block;min-width:44px}
+
+footer{background:linear-gradient(180deg,var(--lacquer),var(--lacquer-deep));color:var(--on-lacquer);border-top:2px solid var(--gold);padding-bottom:env(safe-area-inset-bottom,0px)}
+footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:20px;flex-wrap:wrap}
+footer .credit{font-size:12.5px;opacity:.9;line-height:1.6}
+
+.scrim{position:fixed;inset:0;background:rgba(30,10,8,.55);z-index:50;display:grid;place-items:center;padding:16px}
+.modal{background:var(--paper-2);border:1px solid var(--gold);border-radius:8px;width:min(580px,100%);max-height:calc(100dvh - 32px);overflow:auto;box-shadow:0 20px 50px -20px rgba(0,0,0,.6)}
+.modal header{padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--paper-2);z-index:1}
+.modal header h3{margin:0;font-family:var(--f-display);color:var(--lacquer);font-size:20px}
+.modal form{padding:16px 18px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.modal .full{grid-column:1/-1}
+.modal label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--muted);min-width:0}
+.modal label.chk{flex-direction:row;align-items:center;gap:8px;color:var(--ink)}
+.sp-box{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.sp-head{font-size:13px;color:var(--muted)} .sp-head span{font-size:11.5px}
+#spList{display:flex;flex-direction:column;gap:6px;width:100%}
+.sp-row{display:grid;grid-template-columns:minmax(0,1fr) 110px auto;gap:6px;align-items:center}
+.modal input[readonly]{opacity:.7;cursor:not-allowed}
+.modal .actions{grid-column:1/-1;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;padding-top:4px}
+.modal .actions .left{margin-right:auto}
+@media (max-width:480px){.modal form{grid-template-columns:minmax(0,1fr)}.scrim{padding:8px;align-items:end}}
+.x{background:none;border:0;font-size:24px;cursor:pointer;color:var(--muted);line-height:1;padding:4px 8px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:6px;z-index:60;font-size:14px;max-width:calc(100% - 32px)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <button class="brand" data-go="home" aria-label="Về trang chủ"><span class="seal">杜</span><b>ĐỖ ĐẠI TỘC</b></button>
+    <nav class="main" id="nav" aria-label="Điều hướng chính"></nav>
+    <form class="search" id="searchForm" role="search">
+      <input id="searchInput" type="search" placeholder="Tìm thành viên…" aria-label="Tìm thành viên">
+      <button type="submit" aria-label="Tìm">⌕</button>
+    </form>
+    <button class="acct" id="acct" hidden></button>
+  </div>
+</header>
+<div id="notice"></div>
+<main id="app"></main>
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="seal">杜</span><div><b>ĐỖ ĐẠI TỘC</b><div style="font-size:12px;letter-spacing:.14em">UỐNG NƯỚC NHỚ NGUỒN</div></div></div>
+    <div class="credit">Thôn Trà Trung, xã Hải Hưng, tỉnh Ninh Bình<br>Phả đồ biên soạn: Đỗ Trọng Hanh · Đỗ Thanh Tú · Đỗ Thanh Phúc · Trưởng họ: Đỗ Thế Phách</div>
+  </div>
+</footer>
+<div id="modalRoot"></div>
+
+<script>
+/* Dữ liệu chép từ ảnh phả đồ treo tại nhà thờ họ (đời 1–7). verify:true = cần đối chiếu thân phụ với bản gốc. */
+window.GIAPHA_SEED={
+members:[
+{id:"t01",name:"Đỗ Quý Công Thụy Tảo Minh",gender:"nam",gen:1,parentId:"",title:"Thủy tổ",gio:"19/10",spouse:"Tổ tỷ Đỗ Thị Chính Chính",note:""},
+{id:"t02",name:"Đỗ Quý Công Huy Hiển",gender:"nam",gen:1,parentId:"t01",title:"Tổ khảo",gio:"",spouse:"Tổ tỷ Nguyễn Thị Hằng",note:""},
+{id:"c3a",name:"Đỗ Thị Thau",gender:"nu",gen:1,parentId:"t02",gio:"19/10"},
+{id:"c3b",name:"Đỗ Mạnh Các",gender:"nam",gen:1,parentId:"t02",gio:"07/01"},
+{id:"c3c",name:"Đỗ Pháp Mỹ",gender:"nam",gen:1,parentId:"t02",gio:"19/10",spouse:"Nguyễn Thị Tính (kỵ 13/5)"},
+{id:"c3d",name:"Đỗ Phúc Đường",gender:"nam",gen:1,parentId:"t02",gio:""},
+{id:"c4a",name:"Đỗ Thị Phương Rong",gender:"nu",gen:1,parentId:"c3a",verify:true},
+{id:"c4b",name:"Đỗ Trực Nguyên",gender:"nam",gen:1,parentId:"c3b",gio:"18/8",verify:true},
+{id:"c4c",name:"Đỗ Phúc Thân",gender:"nam",gen:1,parentId:"c3c",gio:"05/12",spouse:"Mai Tinh Đức (kỵ 04/6)",verify:true},
+{id:"c4d",name:"Đỗ Đức Lệ",gender:"nam",gen:1,parentId:"c3d",gio:"26/9",spouse:"Phạm Thị Hằng (kỵ 25/12)",verify:true},
+{id:"c5a",name:"Cụ Khản",gender:"nam",gen:1,parentId:"c4a",note:"Con nuôi",verify:true},
+{id:"c5b",name:"Đỗ Thị Giảng",gender:"nu",gen:1,parentId:"c4b",spouse:"Trần Văn Bột",verify:true},
+{id:"c5c",name:"Đỗ Cai Đạo",gender:"nam",gen:1,parentId:"c4c",gio:"26/02",spouse:"Nguyễn Thị Thược (kỵ 05/02)",verify:true},
+{id:"c5d",name:"Đỗ Ngũ",gender:"nam",gen:1,parentId:"c4d",branch:"Chi Hải Thanh",note:"Ô trên phả đồ ghi: Chi họ Hải Thanh – Trưởng họ: Đỗ Ngũ",verify:true},
+{id:"c6a",name:"Đỗ Thị Tú",gender:"nu",gen:1,parentId:"c5a",spouse:"Phạm Văn Chấp",verify:true},
+{id:"c6b",name:"Đỗ Thị Tuấn",gender:"nu",gen:1,parentId:"c5a",spouse:"Mai Văn Can",verify:true},
+{id:"c6c",name:"Đỗ Văn Cự",gender:"nam",gen:1,parentId:"c5b",spouse:"Phạm Thị Tèo",verify:true},
+{id:"c6d",name:"Đỗ Bá Thủy",gender:"nam",gen:1,parentId:"c5c",gio:"01/9",spouse:"Trần Thị Liễu (kỵ 18/6); Lê Thị Gái (kỵ 07/01); Mai Thị Mít (kỵ 01/03)",verify:true},
+{id:"c6e",name:"Đỗ Thuất Liên",gender:"nam",gen:1,parentId:"c5d",gio:"17/9",spouse:"Phạm Thị Tý (kỵ 11/01)",verify:true},
+{id:"c6f",name:"Đỗ Văn Cừ",gender:"nam",gen:1,parentId:"c5d",gio:"29/04",spouse:"Phạm Thị Gái (kỵ 18/5); Nguyễn Thị Kiến (kỵ 04/04)",verify:true},
+{id:"d01",name:"Đỗ Văn Xướng",gender:"nam",gen:7,gio:"15/8",verify:true},
+{id:"d02",name:"Đỗ Thị Phượng",gender:"nu",gen:7,spouse:"Mai Văn Với",verify:true},
+{id:"d03",name:"Đỗ Thị Loan",gender:"nu",gen:7,spouse:"Phạm Văn Lộng",verify:true},
+{id:"d04",name:"Đỗ Văn Linh",gender:"nam",gen:7,spouse:"Phạm Thị Hậu",verify:true},
+{id:"d05",name:"Đỗ Thị Thơm",gender:"nu",gen:7,spouse:"Mai Văn Mai",verify:true},
+{id:"d06",name:"Đỗ Văn Hà",gender:"nam",gen:7,gio:"28/3",verify:true},
+{id:"d07",name:"Đỗ Thị Mẫu",gender:"nu",gen:7,note:"Con nuôi",verify:true},
+{id:"d08",name:"Đỗ Văn Thiệm",gender:"nam",gen:7,gio:"17/2",spouse:"Phạm Thị Ún (kỵ 18/4)",verify:true},
+{id:"d09",name:"Đỗ Văn Tư",gender:"nam",gen:7,note:"Chết nhỏ",verify:true},
+{id:"d10",name:"Đỗ Thị Nhỡ",gender:"nu",gen:7,gio:"28/5",verify:true},
+{id:"d11",name:"Đỗ Văn Tạc",gender:"nam",gen:7,gio:"25/2",spouse:"Đỗ Thị Go (kỵ 6/8)",verify:true},
+{id:"d12",name:"Đỗ Văn Bồng",gender:"nam",gen:7,gio:"4/10",spouse:"Hoàng Thị Ngùy (kỵ 15/7)",note:"Tên vợ đọc từ ảnh chưa rõ",verify:true},
+{id:"d13",name:"Đỗ Văn Điệt",gender:"nam",gen:7,gio:"10/10",spouse:"Phạm Thị Bò (kỵ 25/2)",verify:true},
+{id:"d14",name:"Đỗ Thị Hoàn",gender:"nu",gen:7,spouse:"Hoàng Văn Lạc",verify:true},
+{id:"d15",name:"Đỗ Văn Liên",gender:"nam",gen:7,gio:"25/3",verify:true},
+{id:"d16",name:"Đỗ Văn Bưởi",gender:"nam",gen:7,gio:"05/4",spouse:"Trần Thị Gất (kỵ 15/12)",note:"Tên vợ đọc từ ảnh chưa rõ",verify:true},
+{id:"d17",name:"Đỗ Thị Rẫn",gender:"nu",gen:7,spouse:"Bùi Văn Thoa",verify:true},
+{id:"d18",name:"Đỗ Thị Vân",gender:"nu",gen:7,spouse:"Hoàng Văn Tăng",verify:true},
+{id:"d19",name:"Đỗ Thị Đô",gender:"nu",gen:7,spouse:"Lê Văn Huyền",verify:true}
+],
+library:[
+{id:"l01",title:"Phả đồ họ Đỗ Đại Tộc",kind:"Gia phả gốc",year:"2026",desc:"Phả đồ 11 đời treo tại nhà thờ họ. Biên soạn: Đỗ Trọng Hanh, Đỗ Thanh Tú, Đỗ Thanh Phúc. Trưởng họ: Đỗ Thế Phách. Hoàn thành ngày 01/01/2026.",where:"Nhà thờ họ, thôn Trà Trung"}
+],
+news:[],
+pages:[
+{id:"lichsu",text:"Họ Đỗ Đại Tộc ở thôn Trà Trung, xã Hải Hưng, tỉnh Ninh Bình.\n\nThủy tổ là cụ Đỗ Quý Công Thụy Tảo Minh, kỵ ngày 19 tháng 10 âm lịch; Tổ tỷ là cụ Đỗ Thị Chính Chính. Đời thứ hai là Tổ khảo Đỗ Quý Công Huy Hiển và Tổ tỷ Nguyễn Thị Hằng. Từ đời thứ ba, dòng họ phát triển thành nhiều ngành, trong đó có chi họ Hải Thanh.\n\nPhả đồ của dòng họ ghi chép 11 đời, do các ông Đỗ Trọng Hanh, Đỗ Thanh Tú và Đỗ Thanh Phúc biên soạn, trưởng họ Đỗ Thế Phách, hoàn thành ngày 01/01/2026."},
+{id:"giahuan",text:"Con cháu thảo hiền vạn đời vinh\nTổ tiên phúc đức ngàn năm sáng"}
+]};
+
+</script>
+<script>
+const CFG=window.GIAPHA_CONFIG||{},SEED=window.GIAPHA_SEED||{members:[],library:[],news:[],pages:[]};
+const FB_VER="10.12.2";
+const DEMO=!CFG.firebase||!CFG.firebase.apiKey||/^DIEN_/.test(CFG.firebase.apiKey);
+let ED="";try{ED=localStorage.getItem("giapha_editor")||""}catch(e){}
+const NAV=[["home","Trang chủ"],["giapha","Gia phả"],["thanhvien","Thành viên"],["chiho","Các chi họ"],["lichsu","Lịch sử dòng họ"],["thuvien","Thư viện"],["tintuc","Tin tức · Lịch kỵ"]];
+const S={db:null,mode:DEMO?"demo":"firebase",loading:true,failed:false,canWrite:true,members:[],library:[],news:[],pages:{},log:[],
+  view:"home",q:"",branch:"",depth:0,sel:null,treeMode:"tree",zoom:innerWidth<640?.85:1};
+const $=s=>document.querySelector(s);
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const initial=n=>{const w=String(n||"?").trim().split(/\s+/);return (w[w.length-1]||"?")[0].toUpperCase()};
+const years=m=>m.born?(m.died?`${m.born} – ${m.died}`:`${m.born}`):(m.died?`? – ${m.died}`:"");
+const subline=m=>years(m)||(m.gio?`Kỵ ${m.gio}`:"");
+function toast(t){const d=document.createElement("div");d.className="toast";d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),2800)}
+
+/* ---------- Kho dữ liệu: bộ nhớ tạm (xem thử) hoặc Firestore ---------- */
+function memoryDB(seed){
+  const store={},subs={};
+  for(const c of Object.keys(seed)){store[c]={};(seed[c]||[]).forEach(d=>{const {id,...r}=d;store[c][id]=r})}
+  const snap=c=>({docs:Object.entries(store[c]||{}).map(([id,d])=>({id,data:()=>d}))});
+  const emit=c=>(subs[c]||[]).forEach(f=>f(snap(c)));
+  const logs=[],logSubs=[];
+  return {collection:c=>({
+    doc:id=>{id=id||"x"+Math.random().toString(36).slice(2,10);return{id,set:async d=>{(store[c]=store[c]||{})[id]=d;emit(c)},delete:async()=>{if(store[c])delete store[c][id];emit(c)}}},
+    onSnapshot:f=>{(subs[c]=subs[c]||[]).push(f);setTimeout(()=>f(snap(c)));return()=>{}}}),
+    log:async e=>{logs.unshift(e);logSubs.forEach(f=>f(logs.slice(0,40)))},
+    recentLog:f=>{logSubs.push(f);setTimeout(()=>f(logs.slice(0,40)));return()=>{}}};
+}
+async function firebaseDB(){
+  const base=`https://www.gstatic.com/firebasejs/${FB_VER}/`;
+  const [A,F]=await Promise.all([import(base+"firebase-app.js"),import(base+"firebase-firestore.js")]);
+  const app=A.initializeApp(CFG.firebase);
+  let fdb;try{fdb=F.initializeFirestore(app,{localCache:F.persistentLocalCache({tabManager:F.persistentMultipleTabManager()})})}catch(e){fdb=F.getFirestore(app)}
+  const DB={
+    collection:c=>({
+      doc:id=>{const ref=id?F.doc(fdb,c,id):F.doc(F.collection(fdb,c));return{id:ref.id,set:d=>F.setDoc(ref,d),delete:()=>F.deleteDoc(ref)}},
+      onSnapshot:(f,err)=>F.onSnapshot(F.collection(fdb,c),s=>f({docs:s.docs.map(d=>({id:d.id,data:()=>d.data()}))}),err)
+    }),
+    batchSet:async rows=>{for(let i=0;i<rows.length;i+=400){const b=F.writeBatch(fdb);rows.slice(i,i+400).forEach(([c,id,d])=>b.set(F.doc(fdb,c,id),d));await b.commit()}},
+    log:e=>F.addDoc(F.collection(fdb,"changelog"),e),
+    recentLog:(f,err)=>F.onSnapshot(F.query(F.collection(fdb,"changelog"),F.orderBy("at","desc"),F.limit(40)),s=>f(s.docs.map(d=>d.data())),err)
+  };
+  return DB;
+}
+function logChange(action,col,id,label){
+  return S.db?.log?.({at:Date.now(),by:ED||"Không ghi tên",action,col,docId:String(id),label:String(label||"").slice(0,120)})?.catch(()=>{});
+}
+function exportData(){
+  const data={xuatLuc:new Date().toISOString(),members:S.members,library:S.library,news:S.news,pages:S.pages};
+  const blob=new Blob([JSON.stringify(data,null,1)],{type:"application/json"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`gia-pha-ho-do-${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);
+  toast("Đã tải bản sao. Hãy cất tệp này cẩn thận.");
+}
+const fmtTime=t=>{const d=new Date(t);const p=n=>String(n).padStart(2,"0");return `${p(d.getDate())}/${p(d.getMonth()+1)}/${d.getFullYear()} ${p(d.getHours())}:${p(d.getMinutes())}`};
+
+/* ---------- Dữ liệu suy ra ---------- */
+let byId={},kids={};
+function index(){
+  byId={};kids={};
+  S.members.forEach(m=>byId[m.id]=m);
+  S.members.forEach(m=>{const p=m.parentId&&byId[m.parentId]?m.parentId:"";(kids[p]=kids[p]||[]).push(m)});
+  Object.values(kids).forEach(a=>a.sort((x,y)=>(x.order??0)-(y.order??0)||(parseInt(x.born)||9999)-(parseInt(y.born)||9999)||String(x.id).localeCompare(y.id)));
+}
+function gen(m,d=0){if(!m)return 0;if(d>80)return 1;const p=byId[m.parentId];return p?gen(p,d+1)+1:(Number(m.gen)||1)}
+function branch(m,d=0){if(!m||d>80)return"";if(m.branch)return m.branch;return branch(byId[m.parentId],d+1)}
+function branches(){const s=new Set();S.members.forEach(m=>{const b=branch(m);if(b)s.add(b)});return [...s].sort((a,b)=>a.localeCompare(b,"vi",{numeric:true}))}
+const mainRoots=()=>(kids[""]||[]).filter(m=>gen(m)===1);
+const loose=()=>(kids[""]||[]).filter(m=>gen(m)>1).sort((a,b)=>gen(a)-gen(b));
+const nVerify=()=>S.members.filter(m=>m.verify).length;
+
+/* ---------- Điều hướng ---------- */
+function go(v){S.view=v;try{history.replaceState(null,"","#"+v)}catch(e){}render();window.scrollTo({top:0})}
+function renderNav(){$("#nav").innerHTML=NAV.map(([k,l])=>`<button data-go="${k}" ${S.view===k?'aria-current="page"':""}>${l}</button>`).join("");
+  $("#nav [aria-current]")?.scrollIntoView?.({block:"nearest",inline:"nearest"})}
+document.addEventListener("click",e=>{
+  const g=e.target.closest("[data-go]");if(g){e.preventDefault();go(g.dataset.go);return}
+  const n=e.target.closest("[data-member]");if(n){openMember(n.dataset.member);return}
+  const a=e.target.closest("[data-act]");if(a&&a.tagName!=="SELECT"&&a.tagName!=="INPUT")ACT[a.dataset.act]?.(a.dataset.arg,a);
+});
+$("#searchForm").addEventListener("submit",e=>{e.preventDefault();S.q=$("#searchInput").value.trim();$("#searchInput").blur();go("thanhvien")});
+window.addEventListener("hashchange",()=>{const h=location.hash.slice(1);if(NAV.some(n=>n[0]===h)&&h!==S.view){S.view=h;render()}});
+{const h=location.hash.slice(1);if(NAV.some(n=>n[0]===h))S.view=h}
+
+/* ---------- Thành phần ---------- */
+const ICON={
+ tree:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="4.5" r="2.5"/><circle cx="5" cy="19.5" r="2.5"/><circle cx="12" cy="19.5" r="2.5"/><circle cx="19" cy="19.5" r="2.5"/><path d="M12 7v10M5 17v-4h14v4"/></svg>',
+ people:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.2c2.9.3 5 2.6 5 5.8"/></svg>',
+ temple:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 9c3 0 5-2 10-5 5 3 7 5 10 5"/><path d="M5 9v11M19 9v11M3 20h18M9 20v-6h6v6"/></svg>',
+ book:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5c3-1 6-1 9 1 3-2 6-2 9-1v14c-3-1-6-1-9 1-3-2-6-2-9-1z"/><path d="M12 6v14"/></svg>',
+ scroll:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h12v18H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>',
+ news:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M7 9h10M7 13h10M7 17h6"/></svg>'
+};
+function spouses(m){
+  return String(m.spouse||"").split(";").map(s=>s.trim()).filter(Boolean).map(s=>{
+    const k=/^(.*?)\s*\(\s*kỵ\s*:?\s*([^)]*)\)\s*$/i.exec(s);return k?{name:k[1].trim(),ky:k[2].trim()}:{name:s,ky:""}});
+}
+function node(m){
+  const g=gen(m);const isRoot=!byId[m.parentId]&&g===1;const sps=spouses(m);
+  const kyTxt=years(m)||(m.gio?`Kỵ: ${m.gio}`:"");
+  return `<div class="node ${isRoot?"root":""} ${m.gender==="nu"?"nu":"nam"} ${m.verify?"chk":""} ${S.sel===m.id?"sel":""}" data-member="${esc(m.id)}" tabindex="0" role="button">
+   ${isRoot?`<span class="av">祖</span>`:""}
+   ${m.title?`<em class="ttl">${esc(m.title)}</em>`:""}
+   <div class="pp"><b>${esc(m.name)}</b>${kyTxt?`<small>${esc(kyTxt)}</small>`:""}</div>
+   ${sps.map(s=>`<div class="pp sp"><span>${esc(s.name)}</span>${s.ky?`<small>Kỵ: ${esc(s.ky)}</small>`:""}</div>`).join("")}
+   <em class="gen">Đời thứ ${g}</em></div>`;
+}
+function treeHTML(list,depthLeft){
+  if(!list.length)return"";
+  return `<ul>${list.map(m=>{const ch=kids[m.id]||[];
+    let inner="";
+    if(ch.length)inner=depthLeft>1?treeHTML(ch,depthLeft-1):`<ul><li><span class="more">+${ch.length} người đời sau</span></li></ul>`;
+    return `<li>${node(m)}${inner}</li>`}).join("")}</ul>`;
+}
+function treeRoots(){
+  if(!S.branch)return mainRoots();
+  return S.members.filter(m=>branch(m)===S.branch&&branch(byId[m.parentId])!==S.branch);
+}
+function pchip(m,showGen){
+  return `<button class="pchip ${m.verify?"chk":""} ${S.sel===m.id?"sel":""}" data-member="${esc(m.id)}"><span class="av ${m.gender==="nu"?"nu":""}">${esc(initial(m.name))}</span><span>${esc(m.name)}${showGen?` <small>· đời ${gen(m)}</small>`:""}${m.gio?` <small>· kỵ ${esc(m.gio)}</small>`:""}</span></button>`;
+}
+function gensHTML(){
+  const by={};S.members.filter(m=>!S.branch||branch(m)===S.branch).forEach(m=>{const g=gen(m);(by[g]=by[g]||[]).push(m)});
+  const gs=Object.keys(by).map(Number).sort((a,b)=>a-b);
+  if(!gs.length)return `<div class="empty">Không có thành viên.</div>`;
+  return `<div class="gens">${gs.map(g=>`<div class="gen-row"><div class="lbl">Đời ${g}<small>${by[g].length} người</small></div><div class="people">${
+    by[g].sort((a,b)=>String(a.parentId||"").localeCompare(b.parentId||"")||String(a.id).localeCompare(b.id)).map(m=>pchip(m)).join("")}</div></div>`).join("")}</div>`;
+}
+function emptyMembers(){
+  if(S.loading)return `<div class="empty">Đang tải gia phả…</div>`;
+  const canSeed=S.canWrite&&SEED.members.length&&S.mode==="firebase";
+  return `<div class="empty"><b>Chưa có thành viên nào trong gia phả</b>${
+    canSeed?`Nạp ${SEED.members.length} người đã chép từ phả đồ treo ở nhà thờ họ làm dữ liệu ban đầu.<div style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button class="btn" data-act="seed">Nạp dữ liệu phả đồ</button><button class="btn ghost" data-act="addMember">+ Tự thêm từ đầu</button></div>`
+    :S.canWrite?`<div style="margin-top:12px"><button class="btn" data-act="addMember">+ Thêm thành viên</button></div>`:"Khi ban quản lý nhập dữ liệu, sơ đồ sẽ hiện ở đây."}</div>`;
+}
+function filters(withMode){
+  const bs=branches();const maxG=Math.max(1,...S.members.map(m=>gen(m)));
+  return `<div class="filters">
+   ${withMode?`<div class="seg" role="group" aria-label="Kiểu xem"><button data-act="mode" data-arg="tree" aria-pressed="${S.treeMode==="tree"}">Sơ đồ</button><button data-act="mode" data-arg="gens" aria-pressed="${S.treeMode==="gens"}">Theo đời</button></div>`:""}
+   ${bs.length?`<select class="f" id="fBranch" aria-label="Chọn chi họ"><option value="">Tất cả các chi</option>${bs.map(b=>`<option ${b===S.branch?"selected":""}>${esc(b)}</option>`).join("")}</select>`:""}
+   ${S.treeMode==="tree"||!withMode?`<select class="f" id="fDepth" aria-label="Số đời hiển thị"><option value="0">Toàn bộ các đời</option>${Array.from({length:maxG},(_,i)=>i+1).map(i=>`<option value="${i}" ${S.depth===i?"selected":""}>${i} đời đầu</option>`).join("")}</select>`:""}
+   ${withMode&&S.treeMode==="tree"?`<span class="zoom"><button data-act="zoom" data-arg="-1" aria-label="Thu nhỏ">−</button><button data-act="zoom" data-arg="1" aria-label="Phóng to">+</button></span>`:""}
+  </div>`;
+}
+function recentRows(n){
+  const list=[...S.members].sort((a,b)=>(b.updatedAt||0)-(a.updatedAt||0)||gen(a)-gen(b)).slice(0,n);
+  if(!list.length)return S.loading?`<div class="empty">Đang tải…</div>`:`<div class="empty">Chưa có cập nhật.</div>`;
+  return `<div class="tbl-wrap"><table><thead><tr><th>Họ và tên</th><th>Ngày kỵ</th><th>Đời</th></tr></thead><tbody>${
+   list.map(m=>`<tr class="click" data-member="${esc(m.id)}"><td><div class="who"><span class="av ${m.gender==="nu"?"nu":""}">${esc(initial(m.name))}</span><span>${esc(m.name)}</span></div></td><td class="num">${esc(m.gio||"—")}</td><td class="num">${gen(m)}</td></tr>`).join("")}</tbody></table></div>`;
+}
+const paras=t=>String(t||"").split(/\n\s*\n/).map(p=>p.trim()).filter(Boolean);
+const lines=t=>String(t||"").split(/\n/).map(p=>p.trim()).filter(Boolean);
+function giahuanList(big){const l=lines(S.pages.giahuan?.text);return l.length?`<ul class="giahuan ${big?"big":""}">${l.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:`<div class="empty">Chưa có nội dung.</div>`}
+
+function kyList(){
+  const out=[];const rx=/(\d{1,2})\s*\/\s*(\d{1,2})/;
+  S.members.forEach(m=>{
+    const a=rx.exec(m.gio||"");if(a)out.push({d:+a[1],mo:+a[2],who:m.name,id:m.id});
+    String(m.spouse||"").split(";").forEach(s=>{const b=/^(.*?)\(kỵ\s*(\d{1,2})\s*\/\s*(\d{1,2})\)/i.exec(s.trim());if(b)out.push({d:+b[2],mo:+b[3],who:b[1].trim()+` (vợ/chồng cụ ${m.name.replace(/^Đỗ\s+/,"")})`,id:m.id})});
+  });
+  return out.filter(x=>x.mo>=1&&x.mo<=12).sort((a,b)=>a.mo-b.mo||a.d-b.d);
+}
+
+const HERO_SVG=`<svg class="land" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+ <path d="M0 210 C120 150 200 170 290 130 C360 100 420 150 500 160 L500 300 L0 300Z" fill="var(--hill-1)"/>
+ <path d="M700 170 C780 120 860 140 930 100 C1010 60 1080 120 1200 140 L1200 300 L700 300Z" fill="var(--hill-1)"/>
+ <path d="M0 250 C160 210 260 230 380 220 C480 212 560 240 640 236 C760 230 860 200 980 214 C1080 226 1150 210 1200 205 L1200 300 L0 300Z" fill="var(--hill-2)"/>
+ <g fill="var(--hill-3)">
+  <path d="M60 252 h150 v40 h-150z"/><path d="M40 254 Q135 216 230 254 Z"/><path d="M78 236 Q135 206 192 236 Z"/>
+  <rect x="34" y="214" width="8" height="78"/><rect x="226" y="214" width="8" height="78"/><circle cx="38" cy="210" r="7"/><circle cx="230" cy="210" r="7"/>
+  <path d="M990 250 h120 v42 h-120z"/><path d="M972 252 Q1050 220 1128 252 Z"/>
+  <path d="M0 292 H1200 V300 H0Z"/>
+ </g></svg>`;
+
+/* ---------- Các trang ---------- */
+const V={};
+V.home=()=>{
+  const hist=paras(S.pages.lichsu?.text);const cd=lines(S.pages.giahuan?.text);
+  return `<section class="hero">${HERO_SVG}<div class="wrap">
+    <span class="seal">杜</span><h1>ĐỖ ĐẠI TỘC</h1><span class="ribbon">Uống nước nhớ nguồn</span>
+    <div class="place">Thôn Trà Trung · xã Hải Hưng · tỉnh Ninh Bình</div>
+    ${cd.length>=2?`<div class="couplet"><span>${esc(cd[0])}</span><span>${esc(cd[1])}</span></div>`:""}</div></section>
+  <div class="wrap">
+   <div class="quick">
+    <button data-go="giapha"><span class="ic">${ICON.tree}</span><span><b>Sơ đồ gia phả</b><small>Từ cụ Thủy tổ</small></span></button>
+    <button data-go="thanhvien"><span class="ic">${ICON.people}</span><span><b>Thành viên</b><small>${S.members.length} người đã ghi phả</small></span></button>
+    <button data-go="chiho"><span class="ic">${ICON.temple}</span><span><b>Các chi họ</b><small>${branches().length} chi, ngành</small></span></button>
+    <button data-go="lichsu"><span class="ic">${ICON.book}</span><span><b>Lịch sử dòng họ</b><small>Nguồn gốc, câu đối</small></span></button>
+    <button data-go="thuvien"><span class="ic">${ICON.scroll}</span><span><b>Thư viện</b><small>Phả đồ, văn bia, ảnh</small></span></button>
+    <button data-go="tintuc"><span class="ic">${ICON.news}</span><span><b>Tin tức · Lịch kỵ</b><small>Ngày kỵ theo tháng</small></span></button>
+   </div>
+   <div class="grid">
+    <section class="panel p-tree"><div class="ph"><h2>Sơ đồ gia phả</h2>${filters(false)}</div>
+      <div class="tree-scroll"><div class="tree" style="zoom:${S.zoom}">${S.members.length?treeHTML(treeRoots(),S.depth||3):""}</div>${S.members.length?"":emptyMembers()}</div>
+      ${S.members.length?`<div class="pb" style="padding-top:0;text-align:right"><button class="link" data-go="giapha">Xem sơ đồ đầy đủ →</button></div>`:""}</section>
+    <section class="panel"><div class="ph"><h2>Thành viên mới cập nhật</h2><button class="link" data-go="thanhvien">Xem tất cả →</button></div>${recentRows(8)}</section>
+    <div class="side">
+     <section class="panel"><div class="ph"><h3>Lịch sử dòng họ</h3><button class="link" data-go="lichsu">Xem thêm →</button></div>
+      <div class="pb excerpt">${hist.length?`<p>${esc(hist.slice(0,2).join(" "))}</p>`:'<span style="color:var(--muted)">Chưa có nội dung.</span>'}</div></section>
+     <section class="panel"><div class="ph"><h3>Câu đối nhà thờ</h3></div><div class="pb">${giahuanList(false)}</div></section>
+    </div>
+   </div>
+  </div>`;
+};
+V.giapha=()=>{
+  const m=S.sel&&byId[S.sel];const lz=loose().filter(x=>!S.branch||branch(x)===S.branch);
+  const body=!S.members.length?emptyMembers():S.treeMode==="gens"?gensHTML():
+    `<div class="tree-scroll"><div class="tree" style="zoom:${S.zoom}">${treeHTML(treeRoots(),S.depth||99)}</div></div>
+     ${lz.length&&!S.branch?`<div class="pb" style="border-top:1px solid var(--line)"><div style="font-weight:600;margin-bottom:4px">Chưa gắn vào sơ đồ (${lz.length} người)</div><div style="font-size:13px;color:var(--muted);margin-bottom:8px">Chưa xác định được thân phụ từ ảnh phả đồ. Mở từng người và chọn thân phụ để đưa vào cây.</div><div class="people">${lz.map(x=>pchip(x,true)).join("")}</div></div>`:""}`;
+  return `<div class="wrap"><h1 class="section-title">Sơ đồ gia phả</h1><p class="section-sub">Chạm vào một người để xem thông tin. Trên điện thoại, vuốt ngang để xem các nhánh hoặc chọn “Theo đời”.</p>
+  <div class="two">
+   <section class="panel"><div class="ph">${filters(true)}${S.canWrite?`<button class="btn" data-act="addMember">+ Thêm</button>`:""}</div>${body}</section>
+   <aside class="panel" id="detail"><div class="ph"><h3>Thông tin</h3></div><div class="pb">${m?detailHTML(m):'<div class="empty">Chọn một người trên sơ đồ.</div>'}</div></aside>
+  </div></div>`;
+};
+function detailHTML(m){
+  const p=byId[m.parentId];const ch=kids[m.id]||[];
+  return `<div class="who" style="margin-bottom:12px;align-items:flex-start"><span class="av ${m.gender==="nu"?"nu":""}" style="width:46px;height:46px;font-size:18px">${esc(initial(m.name))}</span>
+   <div style="min-width:0"><div style="font-family:var(--f-display);font-size:20px;font-weight:800;color:var(--lacquer);line-height:1.2">${esc(m.name)}</div>
+   <div style="font-size:13px;color:var(--muted)">${m.title?esc(m.title)+" · ":""}Đời thứ ${gen(m)}${branch(m)?" · "+esc(branch(m)):""}</div>
+   ${m.verify?'<div style="margin-top:4px"><span class="chip warn">Cần đối chiếu thân phụ với phả đồ gốc</span></div>':""}</div></div>
+   <dl class="dl">
+    <dt>Giới tính</dt><dd>${m.gender==="nu"?"Nữ":"Nam"}</dd>
+    ${m.born?`<dt>Năm sinh</dt><dd>${esc(m.born)}</dd>`:""}
+    ${m.died?`<dt>Năm mất</dt><dd>${esc(m.died)}</dd>`:""}
+    <dt>Ngày kỵ</dt><dd>${esc(m.gio||"—")}</dd>
+    <dt>Thân phụ/mẫu</dt><dd>${p?`<button class="link" data-member="${esc(p.id)}">${esc(p.name)}</button>`:"—"}</dd>
+    ${m.spouse?`<dt>Vợ / chồng</dt><dd>${esc(m.spouse).replace(/; /g,"<br>")}</dd>`:""}
+    <dt>Con</dt><dd>${ch.length?ch.map(c=>`<button class="link" data-member="${esc(c.id)}">${esc(c.name)}</button>`).join("<br>"):"—"}</dd>
+    ${m.note?`<dt>Ghi chú</dt><dd>${esc(m.note)}</dd>`:""}
+    ${m.editedBy?`<dt>Cập nhật</dt><dd>${esc(m.editedBy)}${m.updatedAt?" · "+esc(fmtTime(m.updatedAt)):""}</dd>`:""}
+   </dl>
+   ${S.canWrite?`<div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap"><button class="btn" data-act="editMember" data-arg="${esc(m.id)}">Sửa</button><button class="btn ghost" data-act="addChild" data-arg="${esc(m.id)}">+ Thêm con</button></div>`:""}`;
+}
+V.thanhvien=()=>{
+  const q=S.q.toLowerCase();
+  const list=S.members.filter(m=>!q||[m.name,m.spouse,branch(m),m.born,m.gio].join(" ").toLowerCase().includes(q))
+    .sort((a,b)=>gen(a)-gen(b)||String(a.id).localeCompare(b.id));
+  return `<div class="wrap"><h1 class="section-title">Danh sách thành viên</h1><p class="section-sub">${S.members.length} người đã ghi vào gia phả.</p>
+  <section class="panel" style="margin-bottom:16px"><div class="ph"><input class="f" id="qInput" type="search" placeholder="Lọc theo tên, ngày kỵ, chi…" value="${esc(S.q)}" style="width:280px;max-width:100%"><div class="filters"><button class="btn ghost" data-act="export">Tải bản sao dữ liệu</button>${S.canWrite?`<button class="btn" data-act="addMember">+ Thêm thành viên</button>`:""}</div></div>
+  ${S.members.length?(list.length?`<div class="tbl-wrap"><table><thead><tr><th>Họ và tên</th><th>Đời</th><th>Ngày kỵ</th><th class="hide-sm">Vợ / chồng</th><th class="hide-sm">Thân phụ/mẫu</th></tr></thead><tbody>${
+   list.map(m=>`<tr class="click" data-member="${esc(m.id)}"><td><div class="who"><span class="av ${m.gender==="nu"?"nu":""}">${esc(initial(m.name))}</span><span>${esc(m.name)}${m.verify?' <span class="chip warn">đối chiếu</span>':""}</span></div></td><td class="num">${gen(m)}</td><td class="num">${esc(m.gio||"—")}</td><td class="hide-sm">${esc(m.spouse||"")}</td><td class="hide-sm">${esc(byId[m.parentId]?.name||"—")}</td></tr>`).join("")
+  }</tbody></table></div>`:`<div class="empty">Không tìm thấy “${esc(S.q)}”.</div>`):emptyMembers()}</section>
+  <section class="panel" style="margin-bottom:28px"><div class="ph"><h2>Nhật ký chỉnh sửa</h2><span style="font-size:12.5px;color:var(--muted)">40 thay đổi gần nhất · không thể xóa</span></div>
+  ${S.log.length?`<div class="tbl-wrap"><table><thead><tr><th>Thời gian</th><th>Người sửa</th><th>Việc</th><th>Nội dung</th></tr></thead><tbody>${
+    S.log.map(l=>`<tr><td class="num">${esc(fmtTime(l.at))}</td><td>${esc(l.by)}</td><td>${esc(l.action)}</td><td>${l.col==="members"&&byId[l.docId]?`<button class="link" data-member="${esc(l.docId)}">${esc(l.label)}</button>`:esc(l.label)}</td></tr>`).join("")}</tbody></table></div>`
+   :'<div class="empty">Chưa có chỉnh sửa nào.</div>'}</section></div>`;
+};
+V.chiho=()=>{
+  const bs=branches();
+  return `<div class="wrap"><h1 class="section-title">Các chi họ</h1><p class="section-sub">Ghi tên chi ở trường “Chi họ” của người đứng đầu chi; con cháu sẽ tự thuộc chi đó.</p>
+  ${bs.length?`<div class="cards">${bs.map(b=>{
+    const ms=S.members.filter(m=>branch(m)===b);const head=ms.filter(m=>branch(byId[m.parentId])!==b).sort((x,y)=>gen(x)-gen(y))[0];
+    const gs=ms.map(gen);
+    return `<article class="card"><h3>${esc(b)}</h3><div class="meta">Đứng đầu: ${esc(head?.name||"—")}</div>
+     <div class="stat"><div><b>${ms.length}</b><span>thành viên</span></div><div><b>${Math.min(...gs)}–${Math.max(...gs)}</b><span>các đời</span></div></div>
+     <div><button class="link" data-act="viewBranch" data-arg="${esc(b)}">Xem sơ đồ chi →</button></div></article>`}).join("")}</div>`
+   :`<div class="panel" style="margin-bottom:28px">${S.members.length?'<div class="empty"><b>Chưa phân chi</b>Mở thông tin người đứng đầu mỗi chi và điền tên chi.</div>':emptyMembers()}</div>`}</div>`;
+};
+V.lichsu=()=>{
+  const hist=paras(S.pages.lichsu?.text);
+  return `<div class="wrap"><h1 class="section-title">Lịch sử dòng họ</h1><p class="section-sub">Nguồn gốc, quá trình phát triển và lời dạy của tiền nhân.</p>
+  <div class="two"><section class="panel"><div class="ph"><h2>Nguồn gốc &amp; phát triển</h2>${S.canWrite?`<button class="btn ghost" data-act="editPage" data-arg="lichsu">Sửa</button>`:""}</div>
+   <div class="pb prose">${hist.length?hist.map(p=>`<p>${esc(p)}</p>`).join(""):'<div class="empty">Chưa có nội dung lịch sử.</div>'}</div></section>
+   <aside class="panel"><div class="ph"><h3>Câu đối · Gia huấn</h3>${S.canWrite?`<button class="btn ghost" data-act="editPage" data-arg="giahuan">Sửa</button>`:""}</div><div class="pb">${giahuanList(true)}</div></aside></div></div>`;
+};
+V.thuvien=()=>{
+  const list=[...S.library].sort((a,b)=>String(a.kind).localeCompare(b.kind,"vi")||String(a.title).localeCompare(b.title,"vi"));
+  return `<div class="wrap"><h1 class="section-title">Thư viện tư liệu</h1><p class="section-sub">Phả đồ, văn bia, sắc phong, câu đối, hình ảnh và văn bản của dòng họ.</p>
+  ${S.canWrite?`<div style="margin-bottom:14px"><button class="btn" data-act="addLib">+ Thêm tư liệu</button></div>`:""}
+  ${list.length?`<div class="cards">${list.map(d=>`<article class="card"><div class="meta">${esc(d.kind||"Tư liệu")}${d.year?" · "+esc(d.year):""}</div><h3>${esc(d.title)}</h3><div style="font-size:14px">${esc(d.desc)}</div>
+   ${d.link?`<a class="link" href="${esc(d.link)}" target="_blank" rel="noopener">Mở tài liệu ↗</a>`:""}${d.where?`<div class="meta">Lưu giữ: ${esc(d.where)}</div>`:""}
+   ${S.canWrite?`<div><button class="link" data-act="editLib" data-arg="${esc(d.id)}">Sửa</button></div>`:""}</article>`).join("")}</div>`
+   :`<div class="panel" style="margin-bottom:28px"><div class="empty"><b>Chưa có tư liệu</b>Ghi lại vị trí và nội dung các tư liệu gốc để con cháu tra cứu.</div></div>`}</div>`;
+};
+V.tintuc=()=>{
+  const list=[...S.news].sort((a,b)=>String(b.date).localeCompare(a.date));
+  const ky=kyList();const by={};ky.forEach(k=>(by[k.mo]=by[k.mo]||[]).push(k));
+  return `<div class="wrap"><h1 class="section-title">Tin tức · Lịch kỵ</h1><p class="section-sub">Thông báo giỗ tổ, họp họ, khuyến học; ngày kỵ các cụ theo tháng âm lịch.</p>
+  <div class="two">
+   <div>${S.canWrite?`<div style="margin-bottom:14px"><button class="btn" data-act="addNews">+ Đăng thông báo</button></div>`:""}
+   ${list.length?`<div style="display:flex;flex-direction:column;gap:14px;margin-bottom:16px">${list.map(n=>`<article class="card"><div class="meta">${esc(fmtDate(n.date))}</div><h3>${esc(n.title)}</h3>${paras(n.body).map(p=>`<p style="margin:0;max-width:72ch">${esc(p)}</p>`).join("")}
+    ${S.canWrite?`<div><button class="link" data-act="editNews" data-arg="${esc(n.id)}">Sửa</button></div>`:""}</article>`).join("")}</div>`
+    :`<div class="panel"><div class="empty"><b>Chưa có thông báo</b>Ban quản lý đăng lịch giỗ tổ, họp họ tại đây.</div></div>`}</div>
+   <aside class="panel"><div class="ph"><h3>Lịch kỵ nhật (âm lịch)</h3></div>
+    ${ky.length?Object.keys(by).map(Number).map(mo=>`<div class="ky-month"><div class="m">Tháng ${mo}</div><ul>${by[mo].map(k=>`<li><span>${String(k.d).padStart(2,"0")}/${String(mo).padStart(2,"0")}</span> <button class="link" data-member="${esc(k.id)}" style="font-weight:500;color:var(--ink)">${esc(k.who)}</button></li>`).join("")}</ul></div>`).join("")
+     :'<div class="empty">Chưa có ngày kỵ nào được ghi.</div>'}</aside>
+  </div></div>`;
+};
+const fmtDate=d=>{const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||"");return m?`${m[3]}/${m[2]}/${m[1]}`:(d||"")};
+
+function renderNotice(){
+  const bits=[];
+  if(S.mode==="demo")bits.push(`<span><b>Bản xem thử</b> – chưa kết nối Firebase. Có thể thử sửa, nhưng tải lại trang là mất.</span>`);
+  else if(S.failed)bits.push(`<span>Không kết nối được máy chủ dữ liệu. Kiểm tra mạng rồi tải lại trang.</span>`);
+  if(!S.loading&&nVerify())bits.push(`<span>${nVerify()} người (viền nét đứt) cần đối chiếu thân phụ với phả đồ gốc.</span>`);
+  $("#notice").innerHTML=bits.length?`<div class="notice"><div class="wrap">${bits.join("")}</div></div>`:"";
+}
+function render(){
+  index();renderNav();renderNotice();
+  const ae=document.activeElement,fid=ae?.id,pos=ae?.selectionStart;
+  const sc=$(".tree-scroll");const sx=sc?.scrollLeft,sy=sc?.scrollTop;
+  $("#app").innerHTML=(V[S.view]||V.home)();
+  if(fid==="qInput"){const i=$("#qInput");if(i){i.focus();try{i.setSelectionRange(pos,pos)}catch(e){}}}
+  const sc2=$(".tree-scroll");if(sc2&&sx!=null){sc2.scrollLeft=sx;sc2.scrollTop=sy}
+}
+document.addEventListener("input",e=>{if(e.target.id==="qInput"){S.q=e.target.value;render()}});
+document.addEventListener("change",e=>{
+  if(e.target.id==="fBranch"){S.branch=e.target.value;render()}
+  if(e.target.id==="fDepth"){S.depth=Number(e.target.value);render()}
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape")closeModal();
+  if((e.key==="Enter"||e.key===" ")&&e.target.matches?.(".node")){e.preventDefault();openMember(e.target.dataset.member)}
+});
+
+/* ---------- Thao tác ---------- */
+function openMember(id){
+  S.sel=id;closeModal();
+  if(S.view!=="giapha"){S.view="giapha";try{history.replaceState(null,"","#giapha")}catch(e){}}
+  render();
+  if(innerWidth<900)setTimeout(()=>$("#detail")?.scrollIntoView({behavior:"smooth",block:"start"}),30);
+}
+const ACT={
+  addMember:()=>memberForm(null,""),
+  addChild:id=>memberForm(null,id),
+  editMember:id=>memberForm(byId[id]),
+  viewBranch:b=>{S.branch=b;S.depth=0;go("giapha")},
+  mode:m=>{S.treeMode=m;render()},
+  zoom:d=>{S.zoom=Math.min(1.4,Math.max(.4,Math.round((S.zoom+Number(d)*.15)*100)/100));render()},
+  editPage:k=>pageForm(k),
+  addLib:()=>libForm(null),editLib:id=>libForm(S.library.find(d=>d.id===id)),
+  addNews:()=>newsForm(null),editNews:id=>newsForm(S.news.find(d=>d.id===id)),
+  seed:async(_,btn)=>{
+    btn.disabled=true;btn.textContent="Đang nạp…";const t=Date.now();
+    const rows=[];
+    SEED.members.forEach(({id,...d},i)=>rows.push(["members",id,{...d,updatedAt:t-i}]));
+    SEED.library.forEach(({id,...d})=>rows.push(["library",id,{...d,updatedAt:t}]));
+    (SEED.news||[]).forEach(({id,...d})=>rows.push(["news",id,{...d,updatedAt:t}]));
+    SEED.pages.forEach(({id,...d})=>rows.push(["pages",id,{...d,updatedAt:t}]));
+    try{await S.db.batchSet(rows);logChange("Nạp dữ liệu","members","*",`${SEED.members.length} người từ phả đồ`);toast(`Đã nạp ${SEED.members.length} người`)}catch(e){btn.disabled=false;btn.textContent="Nạp dữ liệu phả đồ";writeErr(e)}
+  },
+  export:()=>exportData()
+};
+function writeErr(e){
+  const c=String(e?.code||"");
+  if(c.includes("permission-denied"))toast("Máy chủ từ chối thay đổi này. Kiểm tra lại firestore.rules.");
+  else if(c.includes("resource-exhausted"))toast("Đã vượt hạn mức miễn phí hôm nay. Thử lại vào ngày mai.");
+  else toast("Chưa lưu được. Kiểm tra kết nối rồi thử lại.");
+}
+
+/* ---------- Biểu mẫu ---------- */
+function closeModal(){$("#modalRoot").innerHTML="";document.body.style.overflow=""}
+function modal(title,fieldsHTML,onSave,onDelete){
+  document.body.style.overflow="hidden";
+  $("#modalRoot").innerHTML=`<div class="scrim" id="scrim"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+   <header><h3 id="mTitle">${esc(title)}</h3><button class="x" id="mClose" aria-label="Đóng">×</button></header>
+   <form id="mForm">${fieldsHTML}
+   <label class="full" style="border-top:1px solid var(--line);padding-top:12px">Người cập nhật (tên bạn – ghi vào nhật ký)<input class="f" id="fEditor" name="__editor" required maxlength="60" placeholder="VD: Đỗ Văn A – đời 9, chi Hải Thanh" value="${esc(ED)}"></label>
+   <div class="actions">${onDelete?`<button type="button" class="btn danger left" id="mDel">Xóa</button>`:""}<button type="button" class="btn ghost" id="mCancel">Hủy</button><button class="btn" type="submit" id="mSave">Lưu</button></div></form></div></div>`;
+  $("#mClose").onclick=$("#mCancel").onclick=closeModal;
+  $("#scrim").addEventListener("mousedown",e=>{if(e.target.id==="scrim")closeModal()});
+  const takeEditor=()=>{ED=$("#fEditor").value.trim();try{localStorage.setItem("giapha_editor",ED)}catch(e){}return !!ED};
+  $("#mForm").addEventListener("submit",async e=>{e.preventDefault();takeEditor();const b=$("#mSave");b.disabled=true;b.textContent="Đang lưu…";
+    try{await onSave(new FormData(e.target));closeModal();toast("Đã lưu");render()}catch(err){b.disabled=false;b.textContent="Lưu";writeErr(err)}});
+  if(onDelete)$("#mDel").onclick=async ev=>{const b=ev.currentTarget;
+    if(!takeEditor()){$("#fEditor").focus();toast("Ghi tên bạn trước khi xóa.");return}
+    if(b.dataset.armed!=="1"){b.dataset.armed="1";b.textContent="Bấm lần nữa để xóa";return}
+    b.disabled=true;try{await onDelete();closeModal();toast("Đã xóa");render()}catch(err){writeErr(err)}};
+  if(innerWidth>640)setTimeout(()=>$("#mForm input,#mForm textarea")?.focus(),30);
+}
+const fv=(fd,k)=>String(fd.get(k)||"").trim();
+function memberForm(m,parentId){
+  const isNew=!m;m=m||{parentId:parentId||"",gender:"nam",gen:parentId?undefined:1};
+  const desc=new Set();if(!isNew){const walk=id=>(kids[id]||[]).forEach(c=>{desc.add(c.id);walk(c.id)});walk(m.id)}
+  const opts=S.members.filter(x=>x.id!==m.id&&!desc.has(x.id)).sort((a,b)=>gen(a)-gen(b)||String(a.id).localeCompare(b.id))
+    .map(x=>`<option value="${esc(x.id)}" ${x.id===m.parentId?"selected":""}>Đời ${gen(x)} · ${esc(x.name)}</option>`).join("");
+  const nKids=(kids[m.id]||[]).length;
+  modal(isNew?"Thêm thành viên":"Sửa thông tin",`
+   <label class="full">Họ và tên<input class="f" id="fName" name="name" required value="${esc(m.name||"Đỗ ")}"></label>
+   <label>Giới tính<select class="f" id="fGender" name="gender"><option value="nam" ${m.gender!=="nu"?"selected":""}>Nam</option><option value="nu" ${m.gender==="nu"?"selected":""}>Nữ</option></select></label>
+   <label>Ngày kỵ (âm lịch)<input class="f" id="fGio" name="gio" placeholder="VD: 19/10" value="${esc(m.gio||"")}"></label>
+   <label class="full">Thân phụ / thân mẫu<select class="f" id="fParent" name="parentId"><option value="">— Không có / chưa rõ —</option>${opts}</select></label>
+   <label>Đời thứ<input class="f" id="fGen" name="gen" type="number" min="1" inputmode="numeric" value="${esc(m.gen||1)}"><small id="genHint" style="font-size:11.5px"></small></label>
+   <label>Chi họ<input class="f" id="fBranchIn" name="branch" placeholder="${esc(branch(byId[m.parentId])||"VD: Chi Hải Thanh")}" value="${esc(m.branch||"")}"></label>
+   <label>Năm sinh<input class="f" id="fBorn" name="born" inputmode="numeric" value="${esc(m.born||"")}"></label>
+   <label>Năm mất<input class="f" id="fDied" name="died" value="${esc(m.died||"")}"></label>
+   <div class="full sp-box"><div class="sp-head">Vợ / chồng <span>(mỗi người một dòng, cùng hiện trong ô trên sơ đồ)</span></div>
+     <div id="spList"></div><button type="button" class="btn ghost" id="spAdd">+ Thêm vợ / chồng</button></div>
+   <label class="full">Ghi chú<textarea class="f" id="fNote" name="note" rows="3">${esc(m.note||"")}</textarea></label>
+   <label class="full chk"><input type="checkbox" id="fVerified" name="verified" ${m.verify?"":"checked"}> Đã đối chiếu với phả đồ gốc</label>
+   ${nKids?`<p class="full" style="margin:0;font-size:12.5px;color:var(--muted)">Người này có ${nKids} con trong phả. Nếu xóa, các con sẽ tách thành nhánh riêng.</p>`:""}`,
+  async fd=>{
+    const {id,...rest}=m;
+    const data={...rest,name:fv(fd,"name"),gender:fv(fd,"gender"),branch:fv(fd,"branch"),born:fv(fd,"born"),died:fv(fd,"died"),parentId:fv(fd,"parentId"),
+      gen:Math.max(1,parseInt(fv(fd,"gen"))||1),gio:fv(fd,"gio"),spouse:spouseString(fd),note:fv(fd,"note"),verify:!fd.get("verified"),updatedAt:Date.now(),editedBy:ED};
+    Object.keys(data).forEach(k=>data[k]===undefined&&delete data[k]);
+    const ref=S.db.collection("members").doc(isNew?undefined:m.id);
+    await ref.set(data);S.sel=ref.id;logChange(isNew?"Thêm người":"Sửa thông tin","members",ref.id,data.name);
+  }, isNew?null:async()=>{await S.db.collection("members").doc(m.id).delete();logChange("Xóa người","members",m.id,m.name);S.sel=null});
+
+  /* Vợ/chồng: mỗi người một dòng (tên + ngày kỵ) */
+  const list=$("#spList");
+  const addRow=(s={name:"",ky:""})=>{
+    const r=document.createElement("div");r.className="sp-row";
+    r.innerHTML=`<input class="f" name="sp_name" placeholder="Họ tên vợ / chồng" value="${esc(s.name)}"><input class="f" name="sp_ky" placeholder="Ngày kỵ" value="${esc(s.ky)}"><button type="button" class="x" aria-label="Bỏ người này">×</button>`;
+    r.querySelector("button").onclick=()=>{r.remove();if(!list.children.length)addRow()};
+    list.appendChild(r);return r;
+  };
+  const cur=spouses(m);(cur.length?cur:[{name:"",ky:""}]).forEach(addRow);
+  $("#spAdd").onclick=()=>addRow().querySelector("input").focus();
+
+  /* Đời thứ: tự tính = đời của thân phụ + 1 */
+  const pSel=$("#fParent"),gIn=$("#fGen"),hint=$("#genHint"),bIn=$("#fBranchIn");
+  const syncGen=()=>{
+    const p=byId[pSel.value];
+    if(p){gIn.value=gen(p)+1;gIn.readOnly=true;hint.textContent=`Tự tính: con của ${p.name} (đời ${gen(p)})`;bIn.placeholder=branch(p)||"VD: Chi Hải Thanh"}
+    else{gIn.readOnly=false;hint.textContent="Chưa rõ thân phụ thì tự điền đời"}
+  };
+  pSel.addEventListener("change",syncGen);syncGen();
+}
+function spouseString(fd){
+  const ns=fd.getAll("sp_name"),ks=fd.getAll("sp_ky");
+  return ns.map((n,i)=>{n=String(n).trim();const k=String(ks[i]||"").trim().replace(/^kỵ\s*:?\s*/i,"");return n?(k?`${n} (kỵ ${k})`:n):""}).filter(Boolean).join("; ");
+}
+function pageForm(k){
+  const p=S.pages[k]||{};
+  modal(k==="lichsu"?"Sửa lịch sử dòng họ":"Sửa câu đối · gia huấn",`<label class="full">${k==="lichsu"?"Nội dung (cách đoạn bằng một dòng trống)":"Mỗi câu một dòng (2 dòng đầu hiện ở trang chủ)"}<textarea class="f" id="fPage" name="text" rows="12">${esc(p.text||"")}</textarea></label>`,
+   async fd=>{await S.db.collection("pages").doc(k).set({text:fv(fd,"text"),updatedAt:Date.now(),editedBy:ED});logChange("Sửa trang","pages",k,k==="lichsu"?"Lịch sử dòng họ":"Câu đối · gia huấn")});
+}
+function libForm(d){
+  const isNew=!d;d=d||{};
+  const kinds=["Gia phả gốc","Văn bia","Sắc phong","Câu đối – Hoành phi","Hình ảnh","Văn bản","Khác"];
+  modal(isNew?"Thêm tư liệu":"Sửa tư liệu",`
+   <label class="full">Tên tư liệu<input class="f" id="lTitle" name="title" required value="${esc(d.title||"")}"></label>
+   <label>Loại<select class="f" id="lKind" name="kind">${kinds.map(x=>`<option ${x===d.kind?"selected":""}>${x}</option>`).join("")}</select></label>
+   <label>Niên đại<input class="f" id="lYear" name="year" value="${esc(d.year||"")}"></label>
+   <label class="full">Mô tả<textarea class="f" id="lDesc" name="desc" rows="4">${esc(d.desc||"")}</textarea></label>
+   <label>Nơi lưu giữ<input class="f" id="lWhere" name="where" value="${esc(d.where||"")}"></label>
+   <label>Đường dẫn ảnh/tài liệu (Google Drive…)<input class="f" id="lLink" name="link" type="url" placeholder="https://" value="${esc(d.link||"")}"></label>`,
+   async fd=>{const data={title:fv(fd,"title"),kind:fv(fd,"kind"),year:fv(fd,"year"),desc:fv(fd,"desc"),where:fv(fd,"where"),link:fv(fd,"link"),updatedAt:Date.now(),editedBy:ED};
+     const ref=S.db.collection("library").doc(isNew?undefined:d.id);await ref.set(data);logChange(isNew?"Thêm tư liệu":"Sửa tư liệu","library",ref.id,data.title)},
+   isNew?null:async()=>{await S.db.collection("library").doc(d.id).delete();logChange("Xóa tư liệu","library",d.id,d.title)});
+}
+function newsForm(n){
+  const isNew=!n;n=n||{date:new Date().toISOString().slice(0,10)};
+  modal(isNew?"Đăng thông báo":"Sửa thông báo",`
+   <label class="full">Tiêu đề<input class="f" id="nTitle" name="title" required value="${esc(n.title||"")}"></label>
+   <label>Ngày<input class="f" id="nDate" name="date" type="date" value="${esc(n.date||"")}"></label>
+   <label class="full">Nội dung<textarea class="f" id="nBody" name="body" rows="6">${esc(n.body||"")}</textarea></label>`,
+   async fd=>{const data={title:fv(fd,"title"),date:fv(fd,"date"),body:fv(fd,"body"),updatedAt:Date.now(),editedBy:ED};
+     const ref=S.db.collection("news").doc(isNew?undefined:n.id);await ref.set(data);logChange(isNew?"Đăng thông báo":"Sửa thông báo","news",ref.id,data.title)},
+   isNew?null:async()=>{await S.db.collection("news").doc(n.id).delete();logChange("Xóa thông báo","news",n.id,n.title)});
+}
+
+/* ---------- Khởi động ---------- */
+function subscribe(){
+  const got=new Set();const done=k=>{got.add(k);if(got.size>=4)S.loading=false;render()};
+  const err=e=>{console.error(e);S.failed=true;S.loading=false;render()};
+  S.db.collection("members").onSnapshot(s=>{S.members=s.docs.map(d=>({id:d.id,...d.data()}));done("m")},err);
+  S.db.collection("library").onSnapshot(s=>{S.library=s.docs.map(d=>({id:d.id,...d.data()}));done("l")},err);
+  S.db.collection("news").onSnapshot(s=>{S.news=s.docs.map(d=>({id:d.id,...d.data()}));done("n")},err);
+  S.db.collection("pages").onSnapshot(s=>{S.pages={};s.docs.forEach(d=>S.pages[d.id]=d.data());done("p")},err);
+  S.db.recentLog(l=>{S.log=l;if(S.view==="thanhvien")render()},e=>console.warn(e));
+}
+render();
+(async()=>{
+  if(DEMO){S.db=memoryDB({members:SEED.members,library:SEED.library,news:SEED.news||[],pages:SEED.pages});subscribe();return}
+  try{
+    S.db=await firebaseDB();
+    subscribe();
+  }catch(e){console.error(e);S.failed=true;S.loading=false;render()}
+})();
+if("serviceWorker" in navigator&&location.protocol==="https:"&&!DEMO){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
+</script>
+<!--CONTENT-END-->
+</body>
+</html>
