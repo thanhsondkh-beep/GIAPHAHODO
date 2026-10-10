@@ -223,6 +223,23 @@ tr.click:hover td{background:var(--paper)}
 .dl dt{color:var(--muted)} .dl dd{margin:0}
 .empty{padding:28px 16px;text-align:center;color:var(--muted)}
 .empty b{display:block;color:var(--ink);font-size:15px;margin-bottom:4px}
+.pic-box{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.pic-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;width:100%}
+.pic-grid:empty{display:none}
+.pic{position:relative;aspect-ratio:1;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:var(--paper)}
+.pic img{width:100%;height:100%;object-fit:cover;display:block}
+.pic-del{position:absolute;top:4px;right:4px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:16px;line-height:1;cursor:pointer}
+.pic-add{cursor:pointer}
+.news-pics{display:grid;gap:6px;margin-top:6px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.news-pics.n1{grid-template-columns:minmax(0,1fr)} .news-pics.n2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.news-pic{border-radius:4px;overflow:hidden;background:var(--gold-soft);aspect-ratio:4/3;max-width:100%}
+.news-pics.n1 .news-pic{aspect-ratio:auto;max-height:480px}
+.news-pic img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}
+.news-pics.n1 .news-pic img{object-fit:contain;max-height:480px}
+.news-pic.broken::after,.pic.broken::after{content:"Không tải được ảnh";display:grid;place-items:center;height:100%;font-size:12px;color:var(--muted)}
+.lightbox{position:fixed;inset:0;z-index:70;background:rgba(10,4,3,.92);display:grid;place-items:center;padding:16px;cursor:zoom-out}
+.lightbox img{max-width:100%;max-height:calc(100dvh - 32px);object-fit:contain}
+.lightbox .x{position:absolute;top:calc(10px + env(safe-area-inset-top,0px));right:12px;color:#fff;font-size:30px}
 .ky-month{display:grid;grid-template-columns:64px minmax(0,1fr);gap:10px;padding:8px 14px;border-bottom:1px solid var(--line);font-size:14px}
 .ky-month:last-child{border-bottom:0}
 .ky-month .m{font-weight:700;color:var(--lacquer)}
@@ -355,6 +372,9 @@ function memoryDB(seed){
     doc:id=>{id=id||"x"+Math.random().toString(36).slice(2,10);return{id,set:async d=>{(store[c]=store[c]||{})[id]=d;emit(c)},delete:async()=>{if(store[c])delete store[c][id];emit(c)}}},
     onSnapshot:f=>{(subs[c]=subs[c]||[]).push(f);setTimeout(()=>f(snap(c)));return()=>{}}}),
     log:async e=>{logs.unshift(e);logSubs.forEach(f=>f(logs.slice(0,40)))},
+    putImg:async d=>{const id="i"+Math.random().toString(36).slice(2,10);(store.images=store.images||{})[id]=d;return id},
+    getImg:async id=>store.images?.[id]?.data||"",
+    delImg:async id=>{if(store.images)delete store.images[id]},
     recentLog:f=>{logSubs.push(f);setTimeout(()=>f(logs.slice(0,40)));return()=>{}}};
 }
 async function firebaseDB(){
@@ -369,6 +389,9 @@ async function firebaseDB(){
     }),
     batchSet:async rows=>{for(let i=0;i<rows.length;i+=400){const b=F.writeBatch(fdb);rows.slice(i,i+400).forEach(([c,id,d])=>b.set(F.doc(fdb,c,id),d));await b.commit()}},
     log:e=>F.addDoc(F.collection(fdb,"changelog"),e),
+    putImg:async d=>(await F.addDoc(F.collection(fdb,"images"),d)).id,
+    getImg:async id=>{const s=await F.getDoc(F.doc(fdb,"images",id));return s.exists()?s.data().data:""},
+    delImg:id=>F.deleteDoc(F.doc(fdb,"images",id)),
     recentLog:(f,err)=>F.onSnapshot(F.query(F.collection(fdb,"changelog"),F.orderBy("at","desc"),F.limit(40)),s=>f(s.docs.map(d=>d.data())),err)
   };
   return DB;
@@ -600,6 +623,7 @@ V.thuvien=()=>{
   return `<div class="wrap"><h1 class="section-title">Thư viện tư liệu</h1><p class="section-sub">Phả đồ, văn bia, sắc phong, câu đối, hình ảnh và văn bản của dòng họ.</p>
   ${S.canWrite?`<div style="margin-bottom:14px"><button class="btn" data-act="addLib">+ Thêm tư liệu</button></div>`:""}
   ${list.length?`<div class="cards">${list.map(d=>`<article class="card"><div class="meta">${esc(d.kind||"Tư liệu")}${d.year?" · "+esc(d.year):""}</div><h3>${esc(d.title)}</h3><div style="font-size:14px">${esc(d.desc)}</div>
+   ${(d.images||[]).length?`<div class="news-pics n${Math.min(d.images.length,3)}">${d.images.map(id=>`<div class="news-pic"><img alt="Ảnh tư liệu" loading="lazy" data-img="${esc(id)}"></div>`).join("")}</div>`:""}
    ${d.link?`<a class="link" href="${esc(d.link)}" target="_blank" rel="noopener">Mở tài liệu ↗</a>`:""}${d.where?`<div class="meta">Lưu giữ: ${esc(d.where)}</div>`:""}
    ${S.canWrite?`<div><button class="link" data-act="editLib" data-arg="${esc(d.id)}">Sửa</button></div>`:""}</article>`).join("")}</div>`
    :`<div class="panel" style="margin-bottom:28px"><div class="empty"><b>Chưa có tư liệu</b>Ghi lại vị trí và nội dung các tư liệu gốc để con cháu tra cứu.</div></div>`}</div>`;
@@ -611,6 +635,7 @@ V.tintuc=()=>{
   <div class="two">
    <div>${S.canWrite?`<div style="margin-bottom:14px"><button class="btn" data-act="addNews">+ Đăng thông báo</button></div>`:""}
    ${list.length?`<div style="display:flex;flex-direction:column;gap:14px;margin-bottom:16px">${list.map(n=>`<article class="card"><div class="meta">${esc(fmtDate(n.date))}</div><h3>${esc(n.title)}</h3>${paras(n.body).map(p=>`<p style="margin:0;max-width:72ch">${esc(p)}</p>`).join("")}
+    ${(n.images||[]).length?`<div class="news-pics n${Math.min(n.images.length,3)}">${n.images.map(id=>`<div class="news-pic"><img alt="Ảnh thông báo" loading="lazy" data-img="${esc(id)}"></div>`).join("")}</div>`:""}
     ${S.canWrite?`<div><button class="link" data-act="editNews" data-arg="${esc(n.id)}">Sửa</button></div>`:""}</article>`).join("")}</div>`
     :`<div class="panel"><div class="empty"><b>Chưa có thông báo</b>Ban quản lý đăng lịch giỗ tổ, họp họ tại đây.</div></div>`}</div>
    <aside class="panel"><div class="ph"><h3>Lịch kỵ nhật (âm lịch)</h3></div>
@@ -632,6 +657,7 @@ function render(){
   const ae=document.activeElement,fid=ae?.id,pos=ae?.selectionStart;
   const sc=$(".tree-scroll");const sx=sc?.scrollLeft,sy=sc?.scrollTop;
   $("#app").innerHTML=(V[S.view]||V.home)();
+  hydrateImgs($("#app"));
   if(fid==="qInput"){const i=$("#qInput");if(i){i.focus();try{i.setSelectionRange(pos,pos)}catch(e){}}}
   const sc2=$(".tree-scroll");if(sc2&&sx!=null){sc2.scrollLeft=sx;sc2.scrollTop=sy}
 }
@@ -767,22 +793,104 @@ function libForm(d){
    <label>Loại<select class="f" id="lKind" name="kind">${kinds.map(x=>`<option ${x===d.kind?"selected":""}>${x}</option>`).join("")}</select></label>
    <label>Niên đại<input class="f" id="lYear" name="year" value="${esc(d.year||"")}"></label>
    <label class="full">Mô tả<textarea class="f" id="lDesc" name="desc" rows="4">${esc(d.desc||"")}</textarea></label>
+   ${picFieldHTML(12,"giữ độ nét cao để đọc được chữ trên văn bia, sắc phong")}
    <label>Nơi lưu giữ<input class="f" id="lWhere" name="where" value="${esc(d.where||"")}"></label>
-   <label>Đường dẫn ảnh/tài liệu (Google Drive…)<input class="f" id="lLink" name="link" type="url" placeholder="https://" value="${esc(d.link||"")}"></label>`,
-   async fd=>{const data={title:fv(fd,"title"),kind:fv(fd,"kind"),year:fv(fd,"year"),desc:fv(fd,"desc"),where:fv(fd,"where"),link:fv(fd,"link"),updatedAt:Date.now(),editedBy:ED};
-     const ref=S.db.collection("library").doc(isNew?undefined:d.id);await ref.set(data);logChange(isNew?"Thêm tư liệu":"Sửa tư liệu","library",ref.id,data.title)},
-   isNew?null:async()=>{await S.db.collection("library").doc(d.id).delete();logChange("Xóa tư liệu","library",d.id,d.title)});
+   <label>Đường dẫn tài liệu khác (Google Drive…)<input class="f" id="lLink" name="link" type="url" placeholder="https://" value="${esc(d.link||"")}"></label>`,
+   async fd=>{const images=await pp.commit();
+     const data={title:fv(fd,"title"),kind:fv(fd,"kind"),year:fv(fd,"year"),desc:fv(fd,"desc"),where:fv(fd,"where"),link:fv(fd,"link"),images,updatedAt:Date.now(),editedBy:ED};
+     const ref=S.db.collection("library").doc(isNew?undefined:d.id);await ref.set(data);
+     logChange(isNew?"Thêm tư liệu":"Sửa tư liệu","library",ref.id,data.title+(images.length?` (${images.length} ảnh)`:""))},
+   isNew?null:async()=>{await S.db.collection("library").doc(d.id).delete();await pp.removeAll();logChange("Xóa tư liệu","library",d.id,d.title)});
+  const pp=picPicker(d.images||[],12,true);
 }
 function newsForm(n){
   const isNew=!n;n=n||{date:new Date().toISOString().slice(0,10)};
   modal(isNew?"Đăng thông báo":"Sửa thông báo",`
    <label class="full">Tiêu đề<input class="f" id="nTitle" name="title" required value="${esc(n.title||"")}"></label>
    <label>Ngày<input class="f" id="nDate" name="date" type="date" value="${esc(n.date||"")}"></label>
-   <label class="full">Nội dung<textarea class="f" id="nBody" name="body" rows="6">${esc(n.body||"")}</textarea></label>`,
-   async fd=>{const data={title:fv(fd,"title"),date:fv(fd,"date"),body:fv(fd,"body"),updatedAt:Date.now(),editedBy:ED};
-     const ref=S.db.collection("news").doc(isNew?undefined:n.id);await ref.set(data);logChange(isNew?"Đăng thông báo":"Sửa thông báo","news",ref.id,data.title)},
-   isNew?null:async()=>{await S.db.collection("news").doc(n.id).delete();logChange("Xóa thông báo","news",n.id,n.title)});
+   <label class="full">Nội dung<textarea class="f" id="nBody" name="body" rows="6">${esc(n.body||"")}</textarea></label>
+   ${picFieldHTML(8,"app tự thu nhỏ trước khi lưu")}`,
+   async fd=>{const images=await pp.commit();
+     const data={title:fv(fd,"title"),date:fv(fd,"date"),body:fv(fd,"body"),images,updatedAt:Date.now(),editedBy:ED};
+     const ref=S.db.collection("news").doc(isNew?undefined:n.id);await ref.set(data);
+     logChange(isNew?"Đăng thông báo":"Sửa thông báo","news",ref.id,data.title+(images.length?` (${images.length} ảnh)`:""))},
+   isNew?null:async()=>{await S.db.collection("news").doc(n.id).delete();await pp.removeAll();logChange("Xóa thông báo","news",n.id,n.title)});
+  const pp=picPicker(n.images||[],8,false);
 }
+
+/* Ô chọn ảnh dùng chung cho Thông báo và Thư viện */
+function picFieldHTML(max,note){
+  return `<div class="full pic-box"><div class="sp-head">Hình ảnh <span>(tối đa ${max} ảnh, ${note})</span></div>
+     <div class="pic-grid" id="picGrid"></div>
+     <label class="btn ghost pic-add" for="picInput">+ Chèn ảnh</label>
+     <input type="file" id="picInput" accept="image/*" multiple hidden>
+     <small id="picMsg" style="color:var(--muted)"></small></div>`;
+}
+function picPicker(ids,max,hiRes){
+  let pics=ids.map(id=>({id}));const old=new Set(ids);
+  const grid=$("#picGrid"),msg=$("#picMsg"),add=$(".pic-add");
+  const draw=()=>{
+    grid.innerHTML=pics.map((p,i)=>`<div class="pic"><img alt="Ảnh ${i+1}" ${p.data?`src="${p.data}"`:`data-img="${esc(p.id)}"`}><button type="button" class="pic-del" data-i="${i}" aria-label="Bỏ ảnh">×</button></div>`).join("");
+    grid.querySelectorAll(".pic-del").forEach(b=>b.onclick=()=>{pics.splice(+b.dataset.i,1);draw()});
+    hydrateImgs(grid);add.hidden=pics.length>=max;
+  };
+  $("#picInput").addEventListener("change",async e=>{
+    const files=[...e.target.files].slice(0,max-pics.length);e.target.value="";
+    for(const f of files){
+      msg.textContent=`Đang thu nhỏ ${f.name}…`;
+      try{pics.push({data:await shrinkImage(f,hiRes)});draw()}catch(err){toast(`Không đọc được ảnh ${f.name}`)}
+    }
+    msg.textContent="";
+  });
+  draw();
+  return {
+    async commit(){
+      if(pics.some(p=>p.data))msg.textContent="Đang tải ảnh lên…";
+      const out=[];
+      for(const p of pics){ if(p.id){out.push(p.id);continue} p.id=await S.db.putImg({data:p.data,at:Date.now(),by:ED});delete p.data;out.push(p.id) }
+      for(const id of old) if(!out.includes(id)) await S.db.delImg(id).catch(()=>{});
+      return out;
+    },
+    async removeAll(){for(const id of old)await S.db.delImg(id).catch(()=>{})}
+  };
+}
+
+/* ---------- Ảnh: thu nhỏ trên máy rồi lưu vào Firestore (collection "images") ---------- */
+function shrinkImage(file,hiRes){
+  const tiers=hiRes?[[2000,.78],[1600,.72],[1280,.66],[1024,.6]]:[[1280,.72],[1024,.62],[800,.55]];
+  const limit=hiRes?650000:420000;
+  return new Promise((ok,fail)=>{
+    const url=URL.createObjectURL(file);const im=new Image();
+    im.onload=()=>{
+      let out="";
+      for(const [max,q] of tiers){
+        const k=Math.min(1,max/Math.max(im.width,im.height));
+        const c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);
+        const g=c.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,c.width,c.height);g.drawImage(im,0,0,c.width,c.height);
+        out=c.toDataURL("image/jpeg",q);if(out.length<limit)break;
+      }
+      URL.revokeObjectURL(url);ok(out);
+    };
+    im.onerror=()=>{URL.revokeObjectURL(url);fail()};
+    im.src=url;
+  });
+}
+const IMG={};
+function loadImg(id){
+  if(!IMG[id])IMG[id]=S.db.getImg(id).catch(()=>{delete IMG[id];return ""});
+  return IMG[id];
+}
+function hydrateImgs(root=document){
+  root.querySelectorAll("img[data-img]:not([src])").forEach(async img=>{
+    const d=await loadImg(img.dataset.img);if(d)img.src=d;else img.closest(".pic,.news-pic")?.classList.add("broken");
+  });
+}
+function openLightbox(src){
+  if(!src)return;
+  const d=document.createElement("div");d.className="lightbox";d.innerHTML=`<img alt="Ảnh phóng to" src="${src}"><button class="x" aria-label="Đóng">×</button>`;
+  d.onclick=()=>d.remove();document.body.appendChild(d);
+}
+document.addEventListener("click",e=>{const im=e.target.closest(".news-pic img");if(im)openLightbox(im.src)});
 
 /* ---------- Khởi động ---------- */
 function subscribe(){
